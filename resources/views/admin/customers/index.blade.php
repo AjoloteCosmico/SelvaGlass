@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'CLIENTES')
+@section('title', 'PROVEEDORES')
 
 @section('content_header')
-    <h1 class="font-bold"><i class="fas fa-users-cog"></i>&nbsp; CLIENTES</h1>
+    <h1 class="font-bold"><i class="fas fa-users-cog"></i>&nbsp; PROVEEDORES</h1>
 @stop
 
 @section('content')
