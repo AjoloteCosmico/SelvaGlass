@@ -281,34 +281,10 @@ return [
                     'can'  => 'VER MONEDAS',
                 ],
                 [
-                    'text' => ' CATEGORIAS',
-                    'icon' => 'fas fa-list-alt fa-fw',
-                    'route'  => 'coins.index',
-                    'can'  => 'VER MONEDAS',
-                ],
-                [
-                    'text' => 'PRODUCTOS',
-                    'icon' => 'fas fa-list-alt fa-fw',
-                    'route'  => 'coins.index',
-                    'can'  => 'VER MONEDAS',
-                ],
-                [
-                    'text' => 'CLIENTES',
+                    'text' => 'PROVEEDORES',
                     'icon' => 'fas fa-users-cog fa-fw',
                     'route'  => 'customers.index',
                     'can'  => 'VER CLIENTES',
-                ],
-                [
-                    'text' => 'UNIDADES DE MEDIDA',
-                    'icon' => 'fas fa-ruler fa-fw',
-                    'route'  => 'units.index',
-                    'can'  => 'VER UNIDADES',
-                ],
-                [
-                    'text' => 'FAMILIAS',
-                    'icon' => 'fas fa-people-roof fa-fw',
-                    'route'  => 'families.index',
-                    'can'  => 'VER FAMILIAS',
                 ],
                 [
                     'text' => 'NIVEL AUTORIZACIÓN',
@@ -322,12 +298,7 @@ return [
                 //     'route'  => 'customer_contacts.index',
                 //     'can'  => 'VER CONTACTOS',
                 // ],
-                [
-                    'text' => 'VENDEDORES',
-                    'icon' => 'fas fa-user-tag fa-fw',
-                    'route'  => 'sellers.index',
-                    'can'  => 'VER VENDEDORES',
-                ],
+                
             ],
             'can' => 'CATALOGOS',
         ],
@@ -335,11 +306,11 @@ return [
             'header' => '===================',
         ],
         [
-            'header' => 'PEDIDOS EXTERNOS',
+            'header' => 'ORDENES DE COMPRA',
             'can' => 'PEDIDOS',
         ],
         [
-            'text' => 'PEDIDO EXTERNO',
+            'text' => 'ORDEN DE COMPRA',
             'icon' => 'fas fa-clipboard-check fa-fw',
             'route'  => 'internal_orders.index',
             'can'  => 'VER PEDIDOS',
@@ -389,13 +360,6 @@ return [
         //     'can' => 'VER APLICACIONES DE PAGO',
         // ],
         
-        [
-            'text' => 'INTERFASE ASPEL COI',
-            'icon' => 'fas fa-money-check fa-fw',
-            
-            'route'  => 'payed_accounts',
-            'can' => 'VER APLICACIONES DE PAGO',
-        ],
         [
             'header' => '===============',
             //'can' => 'Reportes',
