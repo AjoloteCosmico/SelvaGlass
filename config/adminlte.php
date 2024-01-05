@@ -312,44 +312,44 @@ return [
         [
             'text' => 'ORDEN DE COMPRA',
             'icon' => 'fas fa-clipboard-check fa-fw',
-            'route'  => 'internal_orders.index',
+            'route'  => 'dashboard',
             'can'  => 'VER PEDIDOS',
         ],
-        [
-            'header' => '===================',
-        ],
-        [
-            'header' => 'CONTABILIDAD',
-            'can' => 'CONTABILIDAD',
-        ],
         // [
-        //     'text' => 'CUENTAS POR COBRAR',
-        //     'icon' => 'fas fa-money-check',
-        //     'url' => 'cuentas_cobrar',
-        //     'route'  => 'cuentas_cobrar',
-        //     'can' => 'VER CUENTAS X COBRAR',
+        //     'header' => '===================',
         // ],
-        [
-            'text' => 'FACTURAS',
-            'icon' => 'fas fa-file',
-            'url' => 'factures',
-            'route'  => 'factures',
-            'can' => 'VER FACTURAS',
-        ],
-        [
-            'text' => 'NOTAS DE CREDITO ',
-            'icon' => 'fas fa-file ',
-            'url' => 'credit_notes',
-            'route'  => 'credit_notes',
-            'can' => 'VER NOTAS',
-        ],
-        [
-            'text' => 'PAGOS',
-            'icon' => 'fa fa-money ',
-            'url' => 'cobros',
-            'route'  => 'cobros',
-            'can' => 'VER COBROS',
-        ],
+        // [
+        //     'header' => 'CONTABILIDAD',
+        //     'can' => 'CONTABILIDAD',
+        // ],
+        // // [
+        // //     'text' => 'CUENTAS POR COBRAR',
+        // //     'icon' => 'fas fa-money-check',
+        // //     'url' => 'cuentas_cobrar',
+        // //     'route'  => 'cuentas_cobrar',
+        // //     'can' => 'VER CUENTAS X COBRAR',
+        // // ],
+        // [
+        //     'text' => 'FACTURAS',
+        //     'icon' => 'fas fa-file',
+        //     'url' => 'factures',
+        //     'route'  => 'factures',
+        //     'can' => 'VER FACTURAS',
+        // ],
+        // [
+        //     'text' => 'NOTAS DE CREDITO ',
+        //     'icon' => 'fas fa-file ',
+        //     'url' => 'credit_notes',
+        //     'route'  => 'credit_notes',
+        //     'can' => 'VER NOTAS',
+        // ],
+        // [
+        //     'text' => 'PAGOS',
+        //     'icon' => 'fa fa-money ',
+        //     'url' => 'cobros',
+        //     'route'  => 'cobros',
+        //     'can' => 'VER COBROS',
+        // ],
        
         
         // [

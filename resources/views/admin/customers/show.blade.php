@@ -1,16 +1,16 @@
 @extends('adminlte::page')
 
-@section('title', 'EDITAR CLIENTES')
+@section('title', 'EDITAR PROVEEDORES')
 
 @section('content_header')
-    <h1 class="font-bold"><i class="fas fa-users-cog"></i>&nbsp; Cliente</h1>
+    <h1 class="font-bold"><i class="fas fa-users-cog"></i>&nbsp; PROVEEDORES</h1>
 @stop
 
 @section('content')
     <div class="container bg-gray-300 shadow-lg rounded-lg">
         <div class="row rounded-b-none rounded-t-lg shadow-xl bg-white">
             <h5 class="card-title p-2">
-                <i class="fas fa-edit"></i>&nbsp; Editar Datos del Cliente:
+                <i class="fas fa-edit"></i>&nbsp; Editar Datos del proveedor:
             </h5>
             
         </div>
