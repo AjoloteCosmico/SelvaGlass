@@ -20,7 +20,7 @@
                 <div class="col-sm-6 col-xs-12 shadow rounded-xl p4">
                     <div class="card">
                         <div class="card-header">
-                            <h1 class="h5 text-center fw">Ingrese el RFC del nuevo cliente</h1>
+                            <h1 class="h5 text-center fw">Ingrese el RFC del nuevo proveedor</h1>
                         </div>
                         <div class="card-body">
                             
