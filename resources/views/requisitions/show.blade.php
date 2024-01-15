@@ -57,12 +57,12 @@
                     <th colspan="7">Datos del Cliente</th>
                      </tr>
                     <tr class="text-center">
+                        <th>
+                         Numero del proveedor:</th>
                         <td>
-                        <div class="badge badge-danger badge-outlined"> Numero de cliente:</div></td>
-                        <td>
-                        <div class="badge badge-primary badge-outlined">{{$Customers->clave}}</div>  </td>
-                        <td > <div class="badge badge-danger badge-outlined"> Nombre corto:</div> </td> 
-                        <td colspan="2"><div class="badge badge-primary badge-outlined">{{$Customers->alias}} </div></td>
+                        {{$Customers->clave}} </td>
+                        <th >  Nombre corto: </th> 
+                        <td colspan="2">{{$Customers->alias}} </td>
                         <td ><div class="badge badge-danger badge-outlined"> CP:</div> </td>
                         <td> <div class="badge badge-primary badge-outlined">{{$Customers->customer_zip_code}}</div></td>
                     <!-- 6 columas -->
@@ -561,6 +561,9 @@
 }
 </style>
 <style>
+    td{
+        border: 1px solid black;
+    }
     .demo-preview {
   padding-top: 10px;
   padding-bottom: 10px;
