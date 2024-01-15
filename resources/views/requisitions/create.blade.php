@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'PEDIDO INTERNO')
+@section('title', 'REQUISICION DE COMPRA')
 
 @section('content_header')
     <h1 class="font-bold"><i class="fas fa-clipboard-check"></i>&nbsp; REQUISICION DE COMPRA</h1>

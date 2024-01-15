@@ -268,6 +268,10 @@ public function store_comissions(Request $request)
         $TempInternalOrders->ncotizacion=$request->ncotizacion;
         $TempInternalOrders->ncontrato=$request->ncontrato;
         
+        $TempInternalOrders->requisitor=$request->requisitor;
+        $TempInternalOrders->pi=$request->pi;
+        $TempInternalOrders->comprador=$request->comprador;
+        
         $TempInternalOrders->tasa = $request->tasa*0.01;
         $TempInternalOrders->save();
         $TempInternalOrders = TempInternalOrder::where('id', $request->temp_internal_order_id)->first();

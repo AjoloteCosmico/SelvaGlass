@@ -10,7 +10,7 @@
     <div class="container bg-gray-300 shadow-lg rounded-lg">
         <div class="row rounded-b-none rounded-t-lg shadow-xl bg-white">
             <h5 class="card-title p-2">
-                <i class="fas fa-plus-circle"></i>&nbsp; Agregar Pedido Interno:
+                <i class="fas fa-plus-circle"></i>&nbsp; Agregar Requisicion de Compra:
             </h5>
         </div>
         <form action="{{ route('requisition.shipment')}}" method="POST" enctype="multipart/form-data">
@@ -39,13 +39,7 @@
                                         <x-jet-input-error for='date_delivery' />
                                     </div>
                                 </div>
-                                <div class="col-sm-3 col-xs-12">
-                                    <div class="form-group">
-                                        <x-jet-label value="* Entrega de la Instalación" />
-                                        <x-jet-input type="date" name="instalation_date" required class="w-full text-xs" value="{{ $hoy->format('Y-m-d') }}"/>
-                                        <x-jet-input-error for='instalation_date' />
-                                    </div>
-                                </div>
+                                
                                 
                                 <div class="col-sm-3 col-xs-12">
                                     <div class="form-group">
@@ -168,7 +162,29 @@
        <x-jet-input-error for='seller_id' />
    </div>
 
-   
+   <div class = 'row'>
+        <div class="col-sm-3 col-xs-12">
+            <div class="form-group">
+                <x-jet-label value="* Requisitor" />
+                <x-jet-input type="text" name="requisitor" required class="w-full text-xs" onkeyup="javascript:this.value=this.value.toUpperCase();"/>
+                <x-jet-input-error for='requisitor' />
+            </div>
+        </div>
+        <div class="col-sm-3 col-xs-12">
+            <div class="form-group">
+                <x-jet-label value="* PI" />
+                <x-jet-input type="number" name="pi" required class="w-full text-xs"/>
+                <x-jet-input-error for='pi' />
+            </div>
+        </div>
+        <div class="col-sm-3 col-xs-12">
+            <div class="form-group">
+                <x-jet-label value="* Comprador" />
+                <x-jet-input type="number" name="comprador" required class="w-full text-xs"/>
+                <x-jet-input-error for='comprador' />
+            </div>
+        </div>
+   </div>
    <br>
    <div class="row">
                                     <div class="col-sm-3 col-xs-12">
