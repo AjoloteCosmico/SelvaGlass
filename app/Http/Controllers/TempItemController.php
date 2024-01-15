@@ -154,7 +154,7 @@ class TempItemController extends Controller
         $desc=Session::get('desc');
         
         $obs=Session::get('obs');
-        return view('internal_orders.capture_order_items', compact(
+        return view('requisitions.capture_order_items', compact(
             'TempInternalOrders',
             'Customers',
             'TempItems',
@@ -247,7 +247,7 @@ class TempItemController extends Controller
     $Total = $Subtotal + $Iva;
     
     if($captured==0){
-    return view('internal_orders.capture_order_items', compact(
+    return view('requisitions.capture_order_items', compact(
         'TempInternalOrders',
         'Customers',
         'TempItems',

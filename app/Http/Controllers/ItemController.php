@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\InternalOrderController;
+use App\Http\Controllers\RequisitionController;
 use App\Models\Item;
 use App\Models\Customer;
 use App\Models\Family;
-use App\Models\InternalOrder;
+use App\Models\Requisition;
 use App\Models\Unit;
 
 use Illuminate\Http\Request;

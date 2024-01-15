@@ -310,9 +310,9 @@ return [
             'can' => 'PEDIDOS',
         ],
         [
-            'text' => 'ORDEN DE COMPRA',
+            'text' => 'REQUISICION',
             'icon' => 'fas fa-clipboard-check fa-fw',
-            'route'  => 'dashboard',
+            'route'  => 'requisition.index',
             'can'  => 'VER PEDIDOS',
         ],
         // [
