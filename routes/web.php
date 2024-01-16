@@ -32,6 +32,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('dashboard', [DashboardCont
 
 Route::group(['middleware' => ['auth']], function()
 {
+    Route::post('embarque/postear/{id}', [RequisitionController::class, 'shipment'])->name('embarque_requisicion');
+    
     Route::resource('requisition', RequisitionController::class);
     Route::resource('temp_items', TempItemController::class);
     Route::resource('items', ItemController::class);
@@ -39,12 +41,12 @@ Route::group(['middleware' => ['auth']], function()
     Route::resource('factures', FactureController::class);
     Route::post('factures/update_2/{id}', [FactureController::class, 'update'])->name('factures.update2');
     Route::resource('cobros', CobrosController::class);
-    Route::post('cobros/update_2"/{id}', [CobrosController::class, 'update'])->name('cobros.update2');
-    Route::post('cobros/store_desglose"/{id}', [CobrosController::class, 'store_desglose'])->name('cobros.store_desglose');
-    
+    Route::post('cobros/update_2/{id}', [CobrosController::class, 'update'])->name('cobros.update2');
+    Route::post('cobros/store_desglose/{id}', [CobrosController::class, 'store_desglose'])->name('cobros.store_desglose');
+   
     
     Route::resource('credit_notes', NotasCreditoController::class);
-    Route::post('credit_notes/update_"/{id}', [NotasCreditoController::class, 'update'])->name('credit_notes.update2');
+    Route::post('credit_notes/update/{id}', [NotasCreditoController::class, 'update'])->name('credit_notes.update2');
     
    
     Route::get('cobros/revisar/{id}', [CobrosController::class, 'revisar'])->name('cobros.revisar');
@@ -79,9 +81,9 @@ Route::group(['middleware' => ['auth']], function()
     Route::post('tempitems/{id}', [TempItemController::class, 'create_item'])->name('tempitems.create_item');
     Route::get('tempitems/edit/{id}/{captured}', [TempItemController::class, 'edit_item'])->name('tempitems.edit_item');
     Route::get('items/edit/{id}', [ItemController::class, 'edit_item'])->name('items.edit_item');
+    Route::post('captura/requisicion', [RequisitionController::class, 'capture'])->name('requisition.capture');
     
     Route::get('requisitions/edit/{id}', [RequisitionController::class, 'edit_order'])->name('requisition.edit_order');
-    Route::post('requisitions/capture', [RequisitionController::class, 'capture'])->name('requisition.capture');
     Route::post('requisitions/firmar', [RequisitionController::class, 'firmar'])->name('requisition.firmar');
     Route::post('requisitions/dgi', [RequisitionController::class, 'dgi'])->name('requisition.dgi');
     Route::post('requisitions/redefine', [RequisitionController::class, 'redefine'])->name('requisition.redefine_order');
@@ -123,7 +125,7 @@ Route::group(['middleware' => ['auth']], function()
     
     Route::get('pedidoPDF/{id}', [ReportsController::class, 'pedido_pdf'])->name('pedido_pdf');
     Route::get('cuentas', [PaymentsController::class, 'cuentas_reporte'])->name('payments.cuentas_reporte');
-    Route::post('requisitions/partida', [RequisitionController::class, 'partida'])->name('requisition.partida');
+    Route::post('partida', [RequisitionController::class, 'partida'])->name('requisition.partida');
     Route::get('customer/crear_contacto({id}', [CustomerController::class, 'contacto'])->name('customers.contacto');
     Route::post('customer/guardar_contacto', [CustomerController::class, 'store_contact'])->name('customers.store_contact');
     

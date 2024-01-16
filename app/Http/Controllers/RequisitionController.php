@@ -102,137 +102,18 @@ class RequisitionController extends Controller
         ));
     }
    
-    public function comissions(Request $request)
-    {           $rules = [
-        'customer_id' => 'required',
-        'temp_internal_order_id' => 'required',
-        'date_delivery' => 'required',
-        'instalation_date' => 'required',
-        'coin_id' => 'required',
-        'payment_conditions'=> 'required',
-        // 'seller_id' => 'required',
-        // 'comision' => 'required',
-    ];
-
-    $messages = [
-        'customer_id.required' => 'Los datos del Cliente son necesarios',
-        'temp_internal_order_id.required' => 'Existe un error en el pedido',
-        'date_delivery.required' => 'La feha de entrega es necesaria',
-        'instalation_date.required' => 'La fecha de Instalación es necesaria',
-        'coin_id.required' => 'El tipo de Moneda es necesario',
-        'payment_conditions.required' => 'Las condiciones de pago son necesarios',
-        // 'seller_id.required' => 'Elija un vendedor',
-        // 'comision.required' => 'Determine una comision para el vendedor',
-    ];
-
-    $request->validate($rules, $messages);
-    $TempInternalOrders = TempInternalOrder::where('id', $request->temp_internal_order_id)->first();
-
-    $TempInternalOrders->date_delivery = $request->date_delivery;
-    $TempInternalOrders->instalation_date = $request->instalation_date;
-    $TempInternalOrders->reg_date = $request->reg_date;        
-    $TempInternalOrders->coin_id = $request->coin_id;
-    $TempInternalOrders->payment_conditions = $request->payment_conditions;
-    
-    $TempInternalOrders->dgi=$request->dgi * 0.01;
-    $TempInternalOrders->otra=$request->otra * 0.01;
-    $TempInternalOrders->ieps=$request->ieps * 0.01;
-    $TempInternalOrders->isr=$request->isr * 0.01;
-    $TempInternalOrders->descuento=$request->descuento * 0.01;
-    $TempInternalOrders->oc=$request->oc;
-    $TempInternalOrders->ncotizacion=$request->ncotizacion;
-    $TempInternalOrders->ncontrato=$request->ncontrato;
-    
-    $TempInternalOrders->tasa = $request->tasa*0.01;
-    $TempInternalOrders->save();
-    temp_comissions::truncate();
-    $Sellers = Seller::all();
-    $Comisiones=DB::table('temp_comissions')
-     ->join('sellers', 'sellers.id', '=', 'temp_comissions.seller_id')
-     ->where('temp_order_id',$TempInternalOrders->id)
-     ->select('temp_comissions.*','sellers.seller_name','sellers.iniciales')
-     ->get();
-     session(['p_comission' => '']);
-     session(['p_seller_id' => ' ']);
-     
-    return $this->capture_comissions($TempInternalOrders->id,' ');
-    }
-
-
-    public function capture_comissions($id,$message){
-    $TempInternalOrders = TempInternalOrder::where('id', $id)->first();
-    $Message=$message;
-    $Sellers = Seller::all();
-    $Comisiones=DB::table('temp_comissions')
-     ->join('sellers', 'sellers.id', '=', 'temp_comissions.seller_id')
-     ->where('temp_order_id',$TempInternalOrders->id)
-     ->select('temp_comissions.*','sellers.seller_name','sellers.iniciales')
-     ->get();
-     $p_comission=Session::get('p_comission');
-     $p_seller_id=Session::get('p_seller_id');
-    return view('internal_orders.capture_comissions', compact(
-        'TempInternalOrders','Sellers','Comisiones','Message','p_seller_id','p_comission'
-        
-    ));
-    }
-
-
-    public function guardar_comissions(Request $request)
-    {$p_seller_id=$request->p_seller_id;
-     $p_comission=$request->p_comission;
-     if($p_seller_id!="."){
-        
-     session(['p_seller_id' => $p_seller_id]);
-     }
-     if($p_comission!="."){
-        session(['p_comission' => $p_comission]);
-    }
-     $TempInternalOrders = TempInternalOrder::where('id', $request->temp_internal_order_id)->first();
-     $allComissions=temp_comissions::where('seller_id',$request->seller_id)->get();
-
-     if($allComissions->count() > 0){
-        
-        return $this->capture_comissions($TempInternalOrders->id,'duplicated');
-     }else{
-     $comision = new temp_comissions();
-     $comision->seller_id=$request->seller_id;
-     $comision->percentage=$request->comision*0.01;
-     $comision->temp_order_id=$TempInternalOrders->id;
-     $comision->description=$request->description;
-     $comision->save();
-     return $this->capture_comissions($TempInternalOrders->id,' ',compact('p_seller_id','p_comission'));
-     }}
-
-public function store_comissions(Request $request)
-     {
-
-      $InternalOrders = InternalOrder::where('id', $request->internal_order_id)->first();
-      $allComissions=comissions::where('seller_id',$request->seller_id)
-      ->where('order_id',$InternalOrders->id)
-      ->get();
- 
-      if($allComissions->count() > 0){
-         
-         return redirect()->route('internal_orders.edit_order',$InternalOrders->id)->with([ 'duplicated' => 'Si' ]);;
-      }else{
-      $comision = new comissions();
-      $comision->seller_id=$request->seller_id;
-      $comision->percentage=$request->comision*0.01;
-      $comision->order_id=$InternalOrders->id;
-      $comision->description=$request->description;
-      $comision->save();
-      
-      return redirect('internal_orders/edit/'.$InternalOrders->id);}
-     }
     
 
+
+
+
+   
     public function shipment(Request $request)
     {   
         $rules = [
             'customer_id' => 'required',
             'temp_internal_order_id' => 'required',
             'date_delivery' => 'required',
-            'instalation_date' => 'required',
             'coin_id' => 'required',
             'payment_conditions'=> 'required',
             // 'seller_id' => 'required',
@@ -246,15 +127,13 @@ public function store_comissions(Request $request)
             'instalation_date.required' => 'La fecha de Instalación es necesaria',
             'coin_id.required' => 'El tipo de Moneda es necesario',
             'payment_conditions.required' => 'Las condiciones de pago son necesarios',
-            // 'seller_id.required' => 'Elija un vendedor',
-            // 'comision.required' => 'Determine una comision para el vendedor',
         ];
-    
+        
         $request->validate($rules, $messages);
+        
         $TempInternalOrders = TempInternalOrder::where('id', $request->temp_internal_order_id)->first();
     
         $TempInternalOrders->date_delivery = $request->date_delivery;
-        $TempInternalOrders->instalation_date = $request->instalation_date;
         $TempInternalOrders->reg_date = $request->reg_date;        
         $TempInternalOrders->coin_id = $request->coin_id;
         $TempInternalOrders->payment_conditions = $request->payment_conditions;
@@ -416,7 +295,6 @@ public function recalcular_total($id){
             $InternalOrders->seller_id = Auth::user()->id;
             $InternalOrders->comision = $TempInternalOrders->comision;
             $InternalOrders->date_delivery = $TempInternalOrders->date_delivery;
-            $InternalOrders->instalation_date = $TempInternalOrders->instalation_date;
             $InternalOrders->reg_date = $TempInternalOrders->reg_date;
             $InternalOrders->shipment = $TempInternalOrders->shipment;
             $InternalOrders->customer_shipping_address_id = $TempInternalOrders->customer_shipping_address_id;

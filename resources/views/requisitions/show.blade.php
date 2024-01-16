@@ -10,15 +10,15 @@
         <div class="row p-3 m-2 rounded-lg shadow-xl bg-white">
             <div class="row p-4">
                 <div class="col-sm-12 text-center font-bold text-sm" >
-                    <table>
-                        <tr><td> &nbsp; &nbsp; &nbsp;</td>
-                            <td >
+                    <table class=" table-responsive text-xs" style="border: none; border-collapse: collapse;">
+                        <tr style="border: none; border-collapse: collapse;"><td style="border: none; border-collapse: collapse;"> &nbsp; &nbsp; &nbsp;</td>
+                            <td style="border: none; border-collapse: collapse;">
                                 <div class="contaier">
                         
                                                 <img src="{{asset('img/logo/logo.svg')}}" alt="TYRSA"  style="align-self: left;"></td>
                                                 </div></td>
                                  
-                            <td rowspan="2">
+                            <td rowspan="2" style="border: none; border-collapse: collapse;">
                         <br>
             Calle Cuernavaca S/N, Col. Ejido del Quemado,<br>
             C.P. 54,963, Tultepec, Edo. México, R.F.C. <br>
@@ -31,16 +31,27 @@
                                 R.F.C: {{$CompanyProfiles->rfc}} &nbsp; Tels: 01-52 {{$CompanyProfiles->telephone.', '.$CompanyProfiles->telephone2}} <br> E-mail: {{$CompanyProfiles->email}} &nbsp; Web: {{$CompanyProfiles->website}}
                              -->
                         </td>
-                        <td rowspan="2" class="card-body bg-white rounded-xl shadow-md text-center text-sm">
-                                <span style="color: darkblue">Numero PI:<br>
-                                {{$InternalOrders->invoice}}</span>
-                                <br> <br>
-                                NOHA: {{$InternalOrders->noha}} 
+                        <td rowspan="2" style="border: none; border-collapse: collapse;">
+                        <table>
+                            <tr> <th colspan="2"> Requisicion numero:</th></tr>
+                            <tr> <td colspan="2">  {{$InternalOrders->invoice}}</td></tr>
+                            <tr> <th>NOHA: </th> <td> {{$InternalOrders->noha}} </td></tr>
+                        </table>
+                          <br>     
+
+                        <table>
+                            <tr> <th colspan="2"> Fechas (dd-mm-aa):</th></tr>
+                            <tr> <th>Fecha de Emision: </th> <td> {{date('d - m - Y', strtotime($InternalOrders->reg_date))}}  </td></tr>
+                            <tr> <th>Fecha de Entra: </th> <td> {{date('d - m - Y', strtotime($InternalOrders->date_delivery))}}  </td></tr>
+                        
+                        </table>
+
+
                             </td>
                         </tr>
                         
                             
-                        <td  colspan="2"class="text-lg " style="color: red;  width:23%;">{{ $CompanyProfiles->company}}
+                        <td  colspan="2"class="text-lg " style="color: red;  width:23%; border: none; border-collapse: collapse;">{{ $CompanyProfiles->company}}
                         </td>
                         <tr>
                                            

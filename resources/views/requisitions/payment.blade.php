@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'PEDIDO INTERNO')
+@section('title', 'REQUISICION DE COMPRA')
 
 @section('content_header')
     <h1 class="font-bold"><i class="fas fa-credit-card"></i>&nbsp; CONDICIONES DE PAGO</h1>
@@ -38,7 +38,7 @@
                     <table class="table">
   <thead>
     <tr>
-      <th scope="col">RESUMEN DEL PEDIDO INTERNO (P.I.) NUMERO</th>
+      <th scope="col">RESUMEN DE LA REQUISICION (P.I.) NUMERO</th>
       <td >{{$InternalOrders->invoice}}</td>
       
     </tr>
@@ -54,7 +54,7 @@
 </table>
 
                     <br><br>
-<p style ="font-size:250%;">TABLA PROMESA DE COBROS</p>
+<p style ="font-size:250%;">TABLA PROMESA DE PAGO</p>
 <br>
 <h2 style='color:#2C426C; font-size: 150%'>* Todos los pagos incluyen IVA</h2>
 <br><br>
@@ -92,7 +92,7 @@
       @endphp
     
     <tr>
-        <td>{{'COBRO '.$aux_count}}</td>
+        <td>{{'PAGO '.$aux_count}}</td>
         <td> <input type='number' min='0' max='100' step='1'  style='width: 70%;' name="{{'porcentaje['.$aux_count.']'}}"  id="{{'P'.$aux_count}}">%</td>
         <td>{{$Coins -> symbol}} <input type='number' min='0' step='any' max='{{number_format( $InternalOrders->total,2)}}' id="{{'R'.$aux_count}}" style='width: 70%;' ></td>
         @if($i==1)

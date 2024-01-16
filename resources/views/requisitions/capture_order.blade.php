@@ -13,8 +13,9 @@
                 <i class="fas fa-plus-circle"></i>&nbsp; Agregar Requisicion de Compra:
             </h5>
         </div>
-        <form action="{{ route('requisition.shipment')}}" method="POST" enctype="multipart/form-data">
-        @csrf
+        <form   action="{{ route('embarque_requisicion',0) }}" method="POST" enctype="multipart/form-data">
+            @csrf
+       
         <x-jet-input type="hidden" name="customer_id" value="{{ $Customers->id }}"/>
         <x-jet-input type="hidden" name="temp_internal_order_id" value="{{ $TempInternalOrders->id }}"/>
         <div class="row rounded-b-lg rounded-t-none mb-4 shadow-xl bg-gray-300">
