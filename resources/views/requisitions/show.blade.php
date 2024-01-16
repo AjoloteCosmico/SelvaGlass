@@ -63,35 +63,35 @@
                         {{$Customers->clave}} </td>
                         <th >  Nombre corto: </th> 
                         <td colspan="2">{{$Customers->alias}} </td>
-                        <td ><div class="badge badge-danger badge-outlined"> CP:</div> </td>
-                        <td> <div class="badge badge-primary badge-outlined">{{$Customers->customer_zip_code}}</div></td>
+                        <th >CP: </th>
+                        <td> {{$Customers->customer_zip_code}} </td>
                     <!-- 6 columas -->
                     </tr>
                   
                     <tr class="text-center">
-                        <td><div class="badge badge-danger badge-outlined">  Razon Social: </div></td>
-                        <td colspan="4" ><div class="badge badge-primary badge-outlined"> {{$Customers->customer}}</div></td>
-                        <td><div class="badge badge-danger badge-outlined">  Regimen de capital: </div></td>
-                        <td  ><div class="badge badge-primary badge-outlined"> {{$Customers->legal_name}}</div></td>
+                        <th>  Razon Social: </div></td>
+                        <td colspan="4" >  {{$Customers->customer}}</div></td>
+                        <th>  Regimen de capital: </div></td>
+                        <td  >  {{$Customers->legal_name}}</div></td>
                         
                         <!-- 6 columas -->
                     </tr>
                     <tr class="text-center">
-                        <td><div class="badge badge-danger badge-outlined"> RFC: </div> </td>
-                        <td><div class="badge badge-primary badge-outlined"> {{$Customers->customer_rfc}} <div></div> </td>
+                        <th> RFC:  </th>
+                        <td>  {{$Customers->customer_rfc}}  </td>
                         
-                        <td><div class="badge badge-danger badge-outlined"> OC: </div></td>
-                        <td><div class="badge badge-primary badge-outlined"> @if($InternalOrders->oc==0) - @else
+                        <th> OC: </div></th>
+                        <td>  @if($InternalOrders->oc==0) - @else
                                                                               {{$InternalOrders->oc}} @endif</div></td>
-                        <td> <div class="badge badge-danger badge-outlined">Contrato No.: </div></td>
-                        <td colspan="2"> <div class="badge badge-primary badge-outlined" >@if($InternalOrders->ncontrato==0) - @else
+                        <td> Contrato No.: </td>
+                        <td colspan="2">   @if($InternalOrders->ncontrato==0) - @else
                                                                               {{$InternalOrders->ncontrato}} @endif </div></td>
                         <!-- 6 columas -->
                          </tr>
                          
                          <tr class="text-center">
-                        <td rowspan="3"><div class="badge badge-danger badge-outlined" ><br> <br> <br> <br>  Domicilio Fiscal:  <br><br><br><br> <br></div></td>
-                        <td colspan="6"><div class="badge badge-primary badge-outlined"> {{$Customers->customer_street.' '.$Customers->customer_outdoor.' '.$Customers->customer_intdoor.' '.$Customers->customer_suburb}} <br> {{$Customers->customer_city.' '.$Customers->customer_state.' '.$Customers->customer_zip_code}}<br>
+                        <td rowspan="3">   <br> <br> <br> <br>  Domicilio Fiscal:  <br><br><br><br> <br></div></td>
+                        <td colspan="6">  {{$Customers->customer_street.' '.$Customers->customer_outdoor.' '.$Customers->customer_intdoor.' '.$Customers->customer_suburb}} <br> {{$Customers->customer_city.' '.$Customers->customer_state.' '.$Customers->customer_zip_code}}<br>
                                                                 </td>
                          </tr>
                          <tr>
@@ -99,24 +99,24 @@
                             <td></td>
                             
                             <td></td>
-                            <td  colspan = "3"> <div class="badge badge-danger badge-outlined">
+                            <td  colspan = "3">    
                             Fechas </div></td>
 
                          </tr>
                           
                     <tr class="text-center">
                         <td></td>
-                        <td> <div class="badge badge-danger badge-outlined">Tel:</div></td>
-                        <td> <div class="badge badge-primary badge-outlined">{{$Customers->customer_telephone}}</div></td>
+                        <td>    Tel:</div></td>
+                        <td>  {{$Customers->customer_telephone}}</div></td>
                         
                         
-                        <td><div class="badge badge-danger badge-outlined">Semanas </div></td>
-                        <td><div class="badge badge-danger badge-outlined">Evento </div> </td>
-                        <td><div class="badge badge-danger badge-outlined">DD-MM-AAAA </div></td>
+                        <th>Semanas </div></td>
+                        <th>Evento </div> </td>
+                        <th>DD-MM-AAAA </div></td>
                     </tr >
                     <tr class="text-center">
-                        <td rowspan="3"><div class="badge badge-danger badge-outlined" ><br><br> <br> Embarque: <br><br> <br> &nbsp;</div> </td>
-                        <td rowspan="3"> <div class="badge badge-primary badge-outlined">
+                        <td rowspan="3">   <br><br> <br> Embarque: <br><br> <br> &nbsp;</div> </td>
+                        <td rowspan="3">  
                         <br><br> <br>
                         @if($InternalOrders->shipment == 'Sí')
                             Si
@@ -141,31 +141,31 @@
  $primerdia  = new DateTime($pdia."-1-1");
   $semanasreg = (int) floor( $reg->diff($primerdia)->format('%a')/7)+1;}}
 @endphp
-                        <td><div class="badge badge-danger badge-outlined">Domicilio Embarque: </div></td>
+                        <th>Domicilio Embarque: </div></td>
                         <td></td>
-                        <td><div class="badge badge-primary badge-outlined">{{$semanasreg}}  </div></td>
-                        <td> <div class="badge badge-primary badge-outlined">Emision PI </div></td>
-                        <td> <div class="badge badge-primary badge-outlined">{{date('d - m - Y', strtotime($InternalOrders->reg_date))}} </div></td>
+                        <td> {{$semanasreg}}  </div></td>
+                        <td>  Emision PI </div></td>
+                        <td>  {{date('d - m - Y', strtotime($InternalOrders->reg_date))}} </div></td>
                     </tr>
            
                     
                     <tr class="text-center">
                         
-                        <td colspan="2"> <div class="badge badge-primary badge-outlined">{{$CustomerShippingAddresses->customer_shipping_city.' '.$CustomerShippingAddresses->customer_shipping_suburb}} <br> {{$CustomerShippingAddresses->customer_shipping_street.' '.$CustomerShippingAddresses->customer_shipping_indoor}} </div></td>
-                        <td><div class="badge badge-primary badge-outlined">{{$semanasdel}} <br> &nbsp; </div></td>
+                        <td colspan="2">  {{$CustomerShippingAddresses->customer_shipping_city.' '.$CustomerShippingAddresses->customer_shipping_suburb}} <br> {{$CustomerShippingAddresses->customer_shipping_street.' '.$CustomerShippingAddresses->customer_shipping_indoor}} </div></td>
+                        <td> {{$semanasdel}} <br> &nbsp; </div></td>
                         
-                        <td><div class="badge badge-primary badge-outlined">Entrega <br> Equipo </div></td>
-                        <td><div class="badge badge-primary badge-outlined">{{date('j - m - Y', strtotime($InternalOrders->date_delivery))}}   <br> &nbsp;</div></td>
+                        <td> Entrega <br> Equipo </div></td>
+                        <td> {{date('j - m - Y', strtotime($InternalOrders->date_delivery))}}   <br> &nbsp;</div></td>
                     </tr>
                     
                     <tr class="text-center">
                         
-                        <td><div class="badge badge-danger badge-outlined">CP: </div></td>
-                        <td><div class="badge badge-primary badge-outlined">{{$CustomerShippingAddresses->customer_shipping_zip_code}} </div></td>
+                        <th>CP: </div></td>
+                        <td> {{$CustomerShippingAddresses->customer_shipping_zip_code}} </div></td>
                     
-                        <td><div class="badge badge-primary badge-outlined">{{$semanasinst}} </div></td>
-                        <td><div class="badge badge-primary badge-outlined">Instalacion </div></td>
-                        <td><div class="badge badge-primary badge-outlined">{{date('j - m - Y', strtotime($InternalOrders->instalation_date))}} </div></td>
+                        <td> {{$semanasinst}} </div></td>
+                        <td> Instalacion </div></td>
+                        <td> {{date('j - m - Y', strtotime($InternalOrders->instalation_date))}} </div></td>
                     </tr>
                     </table>
 
@@ -174,12 +174,12 @@
                 <br> &nbsp;  
                 <table>
                     <tr>
-                        <td><div class="badge badge-danger badge-outlined"> Contacto </div>  </td>
-                        <td><div class="badge badge-danger badge-outlined"> Nombre</div></td>
-                        <td> <div class="badge badge-danger badge-outlined">Tel movil</div></td>
-                        <td> <div class="badge badge-danger badge-outlined">Tel fijo</div></td>
-                        <td><div class="badge badge-danger badge-outlined"> Ext.</div></td>
-                        <td><div class="badge badge-danger badge-outlined"> Email &nbsp; &nbsp; &nbsp;</div></td>
+                        <th> Contacto </div>  </td>
+                        <th> Nombre</div></td>
+                        <td>    Tel movil</div></td>
+                        <td>    Tel fijo</div></td>
+                        <th> Ext.</div></td>
+                        <th> Email &nbsp; &nbsp; &nbsp;</div></td>
                     </tr>
                     @php
                         $contact_index=1;
@@ -187,11 +187,11 @@
                     <tbody>
                     @foreach($Contacts as $row)
                     <tr>
-                        <td><div class="badge badge-primary badge-outlined">{{$contact_index}}</div></td>
-                        <td><div class="badge badge-primary badge-outlined">{{$row->customer_contact_name}}</div></td>
-                        <td><div class="badge badge-primary badge-outlined">{{$row->customer_contact_mobile}}</div></td>
-                        <td><div class="badge badge-primary badge-outlined">{{$row->customer_contact_office_phone}}</div></td>
-                        <td><div class="badge badge-primary badge-outlined">{{$row->customer_contact_office_phone_ext}}</div></td>
+                        <td> {{$contact_index}}</div></td>
+                        <td> {{$row->customer_contact_name}}</div></td>
+                        <td> {{$row->customer_contact_mobile}}</div></td>
+                        <td> {{$row->customer_contact_office_phone}}</div></td>
+                        <td> {{$row->customer_contact_office_phone_ext}}</div></td>
                         <td><div style="text-transform: lowercase;" class="badge badge-primary badge-outlined">{{$row->customer_contact_email}}</div></td>
                     </tr>
                         @php 
@@ -204,26 +204,26 @@
             <br> &nbsp;
             <table>
                 <tr>
-                    <td><div class="badge badge-danger badge-outlined">Vendedor <br><br> &nbsp;</div></td>
-                    <td><div class="badge badge-danger badge-outlined">Iniciales <br><br> &nbsp;</div></td>
-                    <td><div class="badge badge-danger badge-outlined">Comis.<br><br> &nbsp;</div></td>
-                    <td><div class="badge badge-danger badge-outlined">Cotización <br> No.<br> &nbsp;</div></td>
-                    <td><div class="badge badge-danger badge-outlined">Moneda <br><br> &nbsp;</div></td>
-                    <td><div class="badge badge-danger badge-outlined">Cat <br> Equipo <br> &nbsp;</div></td>
-                    <td><div class="badge badge-danger badge-outlined">Descripcion <br> Global <br>Proyecto</div></td>
-                    <td><div class="badge badge-danger badge-outlined">Ubicación <br> Sucursal <br> Tienda</div></td>
+                    <th>Vendedor <br><br> &nbsp;</div></td>
+                    <th>Iniciales <br><br> &nbsp;</div></td>
+                    <th>Comis.<br><br> &nbsp;</div></td>
+                    <th>Cotización <br> No.<br> &nbsp;</div></td>
+                    <th>Moneda <br><br> &nbsp;</div></td>
+                    <th>Cat <br> Equipo <br> &nbsp;</div></td>
+                    <th>Descripcion <br> Global <br>Proyecto</div></td>
+                    <th>Ubicación <br> Sucursal <br> Tienda</div></td>
                 </tr>
                 
                     <tr>
-                        <td><div class="badge badge-primary badge-outlined"> {{$Sellers->id}}</div></td>
-                        <td><div class="badge badge-primary badge-outlined"> {{$Sellers->iniciales}}</div></td>
-                        <td><div class="badge badge-primary badge-outlined">{{$InternalOrders->comision * 100}} %</div></td>
-                        <td><div class="badge badge-primary badge-outlined">@if($InternalOrders->ncotizacion==0) - @else
+                        <td>  {{$Sellers->id}}</div></td>
+                        <td>  {{$Sellers->iniciales}}</div></td>
+                        <td> {{$InternalOrders->comision * 100}} %</div></td>
+                        <td> @if($InternalOrders->ncotizacion==0) - @else
                                                                               {{$InternalOrders->ncotizacion}} @endif</div></td>
-                        <td><div class="badge badge-primary badge-outlined"> {{$Coins->code}}</div></td>
-                        <td><div class="badge badge-primary badge-outlined"> {{$InternalOrders->category}}</div></td>
-                        <td><div class="badge badge-primary badge-outlined"> {{$InternalOrders->description}}</div></td>
-                        <td><div class="badge badge-primary badge-outlined">{{$Customers->customer_city}}</div> </td>
+                        <td>  {{$Coins->code}}</div></td>
+                        <td>  {{$InternalOrders->category}}</div></td>
+                        <td>  {{$InternalOrders->description}}</div></td>
+                        <td> {{$Customers->customer_city}}</div> </td>
 
                     </tr>
         
@@ -234,29 +234,29 @@
                     <table style="text-align: center;">
                         
                             <tr class="text-center">
-                                <td><div class="badge badge-danger badge-outlined">Pda</div></td>
-                                <td><div class="badge badge-danger badge-outlined">Cant</div></td>
-                                <td><div class="badge badge-danger badge-outlined">Unidad</div></td>
+                                <th>Pda</div></td>
+                                <th>Cant</div></td>
+                                <th>Unidad</div></td>
                                 
                                 
-                                <td style="width:40%"><div class="badge badge-danger badge-outlined">Descripción</div></td>
+                                <td style="width:40%">   Descripción</div></td>
                                 
-                                <td><div class="badge badge-danger badge-outlined">P. U.</div></td>
-                                <td><div class="badge badge-danger badge-outlined">Importe</div></td>
+                                <th>P. U.</div></td>
+                                <th>Importe</div></td>
                             </tr>
                         
                         
                             @foreach ($Items as $row)
                             <tr class="text-center">
-                                <td><div class="badge badge-primary badge-outlined">{{ $row->item }}</div></td>
-                                <td><div class="badge badge-primary badge-outlined">{{ $row->amount }}</div></td>
-                                <td><div class="badge badge-primary badge-outlined">{{ $row->unit }}</div></td>
+                                <td> {{ $row->item }}</div></td>
+                                <td> {{ $row->amount }}</div></td>
+                                <td> {{ $row->unit }}</div></td>
                                 
                                 
                                 <td><div class="badge badge-primary badge-outlined "> <div class="com-text">SKU:  {{ $row->sku}} <br> Familia:   {{$row->family }} <br> {!!  nl2br($row->description )!!}</div></div></td>
                                 
-                                <td class="text-right"><div class="badge badge-primary badge-outlined">${{number_format($row->unit_price, 2) }}</div></td>
-                                <td class="text-right"><div class="badge badge-primary badge-outlined">${{number_format($row->import, 2) }}</div></td>
+                                <td class="text-right"> ${{number_format($row->unit_price, 2) }}</div></td>
+                                <td class="text-right"> ${{number_format($row->import, 2) }}</div></td>
                             </tr>
                             @endforeach
                     
@@ -268,32 +268,32 @@
                 <div class="col-sm-12 text-left"  >
                     <table style="width:40%"  align="right">
                         <tr>
-                        <td><div class="badge badge-danger badge-outlined">Subtotal: </div></td>
-                        <td><div class="badge badge-primary badge-outlined">$ {{number_format($InternalOrders->subtotal,2)}}</div></td>
+                        <th>Subtotal: </div></td>
+                        <td> $ {{number_format($InternalOrders->subtotal,2)}}</div></td>
                         </tr>
                         <tr>
-                        <td><div class="badge badge-danger badge-outlined">Descuento: </div></td>
-                        <td><div class="badge badge-primary badge-outlined">$ {{number_format($InternalOrders->descuento * $InternalOrders->subtotal,2)}} </div></td>
+                        <th>Descuento: </div></td>
+                        <td> $ {{number_format($InternalOrders->descuento * $InternalOrders->subtotal,2)}} </div></td>
                         </tr>
                         <tr>
-                        <td><div class="badge badge-danger badge-outlined">I.E.P.S:</div></td>
-                        <td><div class="badge badge-primary badge-outlined">$ {{number_format($InternalOrders->ieps * $InternalOrders->subtotal,2)}}</div></td>
+                        <th>I.E.P.S:</div></td>
+                        <td> $ {{number_format($InternalOrders->ieps * $InternalOrders->subtotal,2)}}</div></td>
                         </tr>
                         <tr>
-                        <td><div class="badge badge-danger badge-outlined">RET ISR:</div></td>
-                        <td><div class="badge badge-primary badge-outlined">$  {{number_format($InternalOrders->isr * $InternalOrders->subtotal,2)}}</div></td>
+                        <th>RET ISR:</div></td>
+                        <td> $  {{number_format($InternalOrders->isr * $InternalOrders->subtotal,2)}}</div></td>
                         </tr>
                         <tr>
-                        <td><div class="badge badge-danger badge-outlined">RET IVA:</div></td>
-                        <td><div class="badge badge-primary badge-outlined">$  {{number_format($InternalOrders->tasa* $Items->where('family','FLETE')->sum('import'),2)}}</div></td>
+                        <th>RET IVA:</div></td>
+                        <td> $  {{number_format($InternalOrders->tasa* $Items->where('family','FLETE')->sum('import'),2)}}</div></td>
                         
                         </tr> <tr>
-                        <td><div class="badge badge-danger badge-outlined">IVA:</div></td>
-                        <td><div class="badge badge-primary badge-outlined">$  {{number_format(0.16 * $InternalOrders->subtotal*(1-$InternalOrders->descuento),2)}}</div></td>
+                        <th>IVA:</div></td>
+                        <td> $  {{number_format(0.16 * $InternalOrders->subtotal*(1-$InternalOrders->descuento),2)}}</div></td>
                         </tr>
                         <tr>
-                        <td><div class="badge badge-danger badge-outlined">Total</div></td>
-                        <td><div class="badge badge-primary badge-outlined">$ {{number_format($InternalOrders->total,2)}}</div></td>
+                        <th>Total</div></td>
+                        <td> $ {{number_format($InternalOrders->total,2)}}</div></td>
                         </tr>
                         
                     </table>
@@ -302,18 +302,18 @@
                 <div class="col-sm-3 font-bold text-sm">
                 <table  >
                    <tr>
-                    <td><div class="badge badge-danger badge-outlined">Numero de COBROs:</div></td>
-                    <td><div class="badge badge-primary badge-outlined">{{$payments->count()}}</div></td>
+                    <th>Numero de COBROs:</div></td>
+                    <td> {{$payments->count()}}</div></td>
                    </tr>
                    <tr> 
-                    <td><div class="badge badge-danger badge-outlined">Condiciones de COBRO: @foreach($payments as $pay) <br> @endforeach</div></td>
-                    <td> <div class="badge badge-primary badge-outlined">@foreach($payments as $pay)
+                    <th>Condiciones de COBRO: @foreach($payments as $pay) <br> @endforeach</div></td>
+                    <td>  @foreach($payments as $pay)
                         {{$pay->percentage}}% &nbsp; {{$pay->concept}},<br>
                         @endforeach</div>
                     </td>
                    </tr>
                    <tr>
-                    <td><div class="badge badge-danger badge-outlined">Promesas de Cobros:</div></td>
+                    <th>Promesas de Cobros:</div></td>
                     <td></td>
                    </tr>
                 </table>
@@ -321,20 +321,20 @@
                 
                <br><br>&nbsp; <br>
                <table >
-               <tr> <td colspan="9" style="text-align: center;"><div class="badge badge-danger badge-outlined">Tabla de Promesas de Cobros / Derechos adquiridos </div></td></tr>
+               <tr> <td colspan="9" style="text-align: center;">   Tabla de Promesas de Cobros / Derechos adquiridos </div></td></tr>
                
                 <tr>
-                    <td rowspan="2"><div class="badge badge-danger badge-outlined"><br> COBRO No. <br><br> &nbsp;</div></td>
-                    <td rowspan="2"><div class="badge badge-danger badge-outlined"><br> Fecha <br><br> Promesa </div></td>
-                    <td rowspan="2"><div class="badge badge-danger badge-outlined"><br> Dia<br><br> &nbsp;</div> </td>
-                    <td rowspan="2"><div class="badge badge-danger badge-outlined"><br> Semana <br><br> &nbsp;</div></td>
-                    <td colspan="3"><div class="badge badge-danger badge-outlined">Importe por cobrar</div></td>
-                    <td rowspan="2"><div class="badge badge-danger badge-outlined"><br><br> % del Total<br><br> &nbsp;</div></td>
+                    <td rowspan="2">   <br> COBRO No. <br><br> &nbsp;</div></td>
+                    <td rowspan="2">   <br> Fecha <br><br> Promesa </div></td>
+                    <td rowspan="2">   <br> Dia<br><br> &nbsp;</div> </td>
+                    <td rowspan="2">   <br> Semana <br><br> &nbsp;</div></td>
+                    <td colspan="3">   Importe por cobrar</div></td>
+                    <td rowspan="2">   <br><br> % del Total<br><br> &nbsp;</div></td>
                 </tr>
                 <tr>
-                    <td><div class="badge badge-danger badge-outlined">Subtotal</div></td>
-                    <td><div class="badge badge-danger badge-outlined">Iva</div></td>
-                    <td><div class="badge badge-danger badge-outlined">Total con Iva</div></td>
+                    <th>Subtotal</div></td>
+                    <th>Iva</div></td>
+                    <th>Total con Iva</div></td>
                 </tr>
                 <tbody>
                     @php
@@ -352,14 +352,14 @@
                     $p=$p+1;}}
                     @endphp
                     <tr>
-                        <td><div class="badge badge-primary badge-outlined">{{$p}}</div></td>
-                        <td><div class="badge badge-primary badge-outlined">{{date('d - m - Y', strtotime($pay->date))}}</div></td>
-                        <td><div class="badge badge-primary badge-outlined">{{$dias}}</div></td>
-                        <td><div class="badge badge-primary badge-outlined">{{(int)floor($dias / 7)+1}}</div></td>
-                        <td><div class="badge badge-primary badge-outlined">${{number_format($InternalOrders->subtotal *$pay->percentage*0.01,2)}}</div></td>
-                        <td><div class="badge badge-primary badge-outlined">${{number_format($InternalOrders->subtotal *$pay->percentage*0.0016,2)}}</div></td>
-                        <td><div class="badge badge-primary badge-outlined">${{number_format($pay->amount,2)}}</div></td>
-                        <td><div class="badge badge-primary badge-outlined">{{$pay->percentage}} %</div></td>
+                        <td> {{$p}}</div></td>
+                        <td> {{date('d - m - Y', strtotime($pay->date))}}</div></td>
+                        <td> {{$dias}}</div></td>
+                        <td> {{(int)floor($dias / 7)+1}}</div></td>
+                        <td> ${{number_format($InternalOrders->subtotal *$pay->percentage*0.01,2)}}</div></td>
+                        <td> ${{number_format($InternalOrders->subtotal *$pay->percentage*0.0016,2)}}</div></td>
+                        <td> ${{number_format($pay->amount,2)}}</div></td>
+                        <td> {{$pay->percentage}} %</div></td>
                         
                     </tr>
                     
@@ -368,11 +368,11 @@
                         <td></td>
                         <td></td>
                         <td></td>   
-                        <td><div class="badge badge-danger badge-outlined">Totales:</div></td>
-                        <td><div class="badge badge-primary badge-outlined">${{number_format($InternalOrders->subtotal,2) }}</div></td>
-                        <td><div class="badge badge-primary badge-outlined">${{number_format($InternalOrders->subtotal*0.16,2) }}</div></td>
-                        <td><div class="badge badge-primary badge-outlined">${{number_format($payments->sum('amount'),2) }}</div></td>
-                        <td><div class="badge badge-primary badge-outlined">100%</div></td>
+                        <th>Totales:</div></td>
+                        <td> ${{number_format($InternalOrders->subtotal,2) }}</div></td>
+                        <td> ${{number_format($InternalOrders->subtotal*0.16,2) }}</div></td>
+                        <td> ${{number_format($payments->sum('amount'),2) }}</div></td>
+                        <td> 100%</div></td>
                         
                 
                     </tr>
@@ -382,10 +382,10 @@
                <br>&nbsp;
                <table style="text-align: center;">
                 <tr>
-                    <td><div class="badge badge-danger badge-outlined">Observaciones: </div></td>
+                    <th>Observaciones: </div></td>
                 </tr>
                     <tr>
-                        <td><div class="badge badge-primary badge-outlined"><div class="com-text"> {{$InternalOrders->observations}}</div></div></td>
+                        <td> <div class="com-text"> {{$InternalOrders->observations}}</div></div></td>
                     </tr>
                 
                </table>
@@ -394,15 +394,15 @@
                <br><br>&nbsp;
                <table align="left">
 
-                <tr class="text-center"><td colspan="2"><div class="badge badge-danger badge-outlined">Correos Personales </div></td></tr>
+                <tr class="text-center"><td colspan="2">   Correos Personales </div></td></tr>
                 <tr class="text-center">
-                    <td><div class="badge badge-danger badge-outlined">Contacto</div></td>
-                    <td><div class="badge badge-danger badge-outlined">Email Personal</div></td>
+                    <th>Contacto</div></td>
+                    <th>Email Personal</div></td>
                  </tr>
                  
                  @foreach($Contacts as $row)
                     <tr>
-                        <td><div class="badge badge-primary badge-outlined">{{$row->id}}</div></td>
+                        <td> {{$row->id}}</div></td>
                         <td><div style="text-transform: lowercase;" class="badge badge-primary badge-outlined">{{$row->customer_contact_email}}</div></td>
                     </tr>
                     @endforeach
