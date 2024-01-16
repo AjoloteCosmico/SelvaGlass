@@ -64,119 +64,80 @@
             <h5 class="text-lg text-center text-bold">REQUISICION DE COMPRA</h5>
             <br>
             <div >
-                    <table class="table table-responsive text-xs">
-                    <th colspan="7">Datos del Cliente</th>
-                     </tr>
+                <!-- 14 columas, para poder copiar del excel -->
+            <table class="table table-responsive text-xs">
+                <tr><th colspan="14">Datos del Proveedor</th></tr>
                     <tr class="text-center">
-                        <th>
-                         Numero del proveedor:</th>
-                        <td>
-                        {{$Customers->clave}} </td>
-                        <th >  Nombre corto: </th> 
-                        <td colspan="2">{{$Customers->alias}} </td>
-                        <th >CP: </th>
-                        <td> {{$Customers->customer_zip_code}} </td>
-                    <!-- 6 columas -->
+                        <th colspan="2"> Numero del proveedor:</th>
+                        <td colspan="2"> {{$Customers->clave}} </td>
+                        <th colspan="2">  Nombre corto: </th> 
+                        <td colspan="4">{{$Customers->alias}} </td>
+                        <th colspan="2">CP: </th>
+                        <td colspan="2"> {{$Customers->customer_zip_code}} </td>
                     </tr>
-                  
-                    <tr class="text-center">
-                        <th>  Razon Social: </div></td>
-                        <td colspan="4" >  {{$Customers->customer}}</div></td>
-                        <th>  Regimen de capital: </div></td>
-                        <td  >  {{$Customers->legal_name}}</div></td>
-                        
-                        <!-- 6 columas -->
-                    </tr>
-                    <tr class="text-center">
-                        <th> RFC:  </th>
-                        <td>  {{$Customers->customer_rfc}}  </td>
-                        
-                        <th> OC: </div></th>
-                        <td>  @if($InternalOrders->oc==0) - @else
-                                                                              {{$InternalOrders->oc}} @endif</div></td>
-                        <td> Contrato No.: </td>
-                        <td colspan="2">   @if($InternalOrders->ncontrato==0) - @else
-                                                                              {{$InternalOrders->ncontrato}} @endif </div></td>
-                        <!-- 6 columas -->
-                         </tr>
-                         
-                         <tr class="text-center">
-                        <td rowspan="3">   <br> <br> <br> <br>  Domicilio Fiscal:  <br><br><br><br> <br></div></td>
-                        <td colspan="6">  {{$Customers->customer_street.' '.$Customers->customer_outdoor.' '.$Customers->customer_intdoor.' '.$Customers->customer_suburb}} <br> {{$Customers->customer_city.' '.$Customers->customer_state.' '.$Customers->customer_zip_code}}<br>
-                                                                </td>
-                         </tr>
-                         <tr>
-                            <td></td>
-                            <td></td>
-                            
-                            <td></td>
-                            <td  colspan = "3">    
-                            Fechas </div></td>
 
-                         </tr>
-                          
-                    <tr class="text-center">
-                        <td></td>
-                        <td>    Tel:</div></td>
-                        <td>  {{$Customers->customer_telephone}}</div></td>
-                        
-                        
-                        <th>Semanas </div></td>
-                        <th>Evento </div> </td>
-                        <th>DD-MM-AAAA </div></td>
-                    </tr >
-                    <tr class="text-center">
-                        <td rowspan="3">   <br><br> <br> Embarque: <br><br> <br> &nbsp;</div> </td>
-                        <td rowspan="3">  
-                        <br><br> <br>
-                        @if($InternalOrders->shipment == 'Sí')
-                            Si
-                            @else
-                            No
-                            @endif
-                            <br><br><br> &nbsp;
-                              </div></td>
-                              @php
-{{$del = new DateTime($InternalOrders->date_delivery);
-    $pdia=$del->format('Y');
-    $primerdia  = new DateTime($pdia."-1-1");
-  
-  $semanasdel = (int) floor($del->diff($primerdia)->format('%a')/7)+1;
-  
-  $inst = new DateTime($InternalOrders->instalation_date);
-  $pdia=$inst->format('Y');
- $primerdia  = new DateTime($pdia."-1-1");
-  $semanasinst = (int) floor($inst->diff($primerdia)->format('%a')/7)+1;
-  $reg = new DateTime($InternalOrders->reg_date);
-  $pdia=$reg->format('Y');
- $primerdia  = new DateTime($pdia."-1-1");
-  $semanasreg = (int) floor( $reg->diff($primerdia)->format('%a')/7)+1;}}
-@endphp
-                        <th>Domicilio Embarque: </div></td>
-                        <td></td>
-                        <td> {{$semanasreg}}  </div></td>
-                        <td>  Emision PI </div></td>
-                        <td>  {{date('d - m - Y', strtotime($InternalOrders->reg_date))}} </div></td>
+                    <tr>
+                        <th colspan="2"> Razon Social: <br> </th>
+                        <td colspan="12"> {{$Customers->customer}} <br> <br> </td>
                     </tr>
-           
-                    
-                    <tr class="text-center">
-                        
-                        <td colspan="2">  {{$CustomerShippingAddresses->customer_shipping_city.' '.$CustomerShippingAddresses->customer_shipping_suburb}} <br> {{$CustomerShippingAddresses->customer_shipping_street.' '.$CustomerShippingAddresses->customer_shipping_indoor}} </div></td>
-                        <td> {{$semanasdel}} <br> &nbsp; </div></td>
-                        
-                        <td> Entrega <br> Equipo </div></td>
-                        <td> {{date('j - m - Y', strtotime($InternalOrders->date_delivery))}}   <br> &nbsp;</div></td>
+
+                    <tr>
+                        <th colspan="2"> Regimen de Capital: </th>
+                        <td colspan="12"> S.A DE C.V </td>
+                    </tr>
+
+                    <tr>
+                        <th colspan="2"> Regimen Fiscal: </th>
+                        <td colspan="12"> REGIMEN GENERAL DE PERSONAS MORALES </td>
                     </tr>
                     
-                    <tr class="text-center">
-                        
-                        <th>CP: </div></td>
-                        <td> {{$CustomerShippingAddresses->customer_shipping_zip_code}} </div></td>
-                    
-                        <td> {{$semanasinst}} </div></td>
-                        <td> Instalacion </div></td>
-                        <td> {{date('j - m - Y', strtotime($InternalOrders->instalation_date))}} </div></td>
+                    <tr>
+                        <th colspan="2"> RFC</th>
+                        <td colspan="2"> {{$Customers->customer_rfc}}</td>
+                        <th colspan="2"> cot no: </th>
+                        <td colspan="3"> @if($InternalOrders->ncotizacion !=0) {{$InternalOrders->ncotizacion}} @else - @endif</td>
+                        <th colspan="2"> contrato no: </th>
+                        <td colspan="3">  @if($InternalOrders->ncontrato !=0) {{$InternalOrders->ncontrato}} @else - @endif</td>
+                    </tr>
+
+                    <tr>
+                        <th colspan="2" rowspan="2"> Domicilio Fiscal <br> <br> </th>
+                        <td colspan="12" style="word-wrap: break-word">  {{$Customers->customer_street.' '.$Customers->customer_outdoor.' '.$Customers->customer_intdoor.' '.$Customers->customer_suburb}} <br> {{$Customers->customer_city.' '.$Customers->customer_state.' '.$Customers->customer_zip_code}} </td>
+                    </tr>
+                    <tr>
+                        <td colspan="7" > </td>
+                        <th> telefono</th>
+                        <td colspan="4" > </td>
+                    </tr>
+
+                    <tr>
+                        <th rowspan="3">  Embarque</th>
+                        <td rowspan="3"> Si</td>
+                        <th colspan="3"> Domicilio de Embarque </th>
+                        <td colspan="9"> </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="11"> </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="9"> </td>
+                        <th>cp:</th>
+                        <td> </td>
+                    </tr>
+
+                    <tr>
+                        <th>Requisitor:  </th>
+                        <td></td>
+                        <th colspan="2"></th>
+                        <td></td>
+                        <th> PI:</th>
+                        <td colspan="2"></td>
+                        <th> Moneda:</th>
+                        <td></td>
+                        <th colspan="2">Comprador:</th>
+                        <td colspan="2"> </td>
                     </tr>
                     </table>
 
@@ -185,12 +146,12 @@
                 <br> &nbsp;  
                 <table>
                     <tr>
-                        <th> Contacto </div>  </td>
-                        <th> Nombre</div></td>
-                        <td>    Tel movil</div></td>
-                        <td>    Tel fijo</div></td>
-                        <th> Ext.</div></td>
-                        <th> Email &nbsp; &nbsp; &nbsp;</div></td>
+                        <th> Contacto   </th>
+                        <th> Nombre </th>
+                        <th>    Tel movil </th>
+                        <th>    Tel fijo </th>
+                        <th> Ext. </th>
+                        <th> Email &nbsp; &nbsp; &nbsp; </th>
                     </tr>
                     @php
                         $contact_index=1;
