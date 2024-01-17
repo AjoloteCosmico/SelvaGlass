@@ -711,7 +711,7 @@ public function recalcular_total($id){
             $this_payment->concept = $request->get('CONCEPTO')[$i];
             $this_payment->percentage = (float)$request->get('porcentaje')[$i];
             $this_payment->amount = (float)$Subtotal*(float)$this_payment->percentage*0.0116;
-            $this_payment->date = $request->get('date')[$i];
+            $this_payment->dates = $request->get('date')[$i];
           //$this_payment->nota = $request->get('nota')[$i];
             $this_payment->save();
         }
