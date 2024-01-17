@@ -109,6 +109,7 @@ class RequisitionController extends Controller
 
    
     public function shipment(Request $request)
+
     {   
         $rules = [
             'customer_id' => 'required',
@@ -312,12 +313,19 @@ public function recalcular_total($id){
             $InternalOrders->ieps = $TempInternalOrders->ieps;
             $InternalOrders->isr = $TempInternalOrders->isr;
             $InternalOrders->tasa = $TempInternalOrders->tasa;
+
+            $InternalOrders->requisitor=$TempInternalOrders->requisitor;
+            $InternalOrders->pi=$TempInternalOrders->pi;
+            $InternalOrders->comprador=$TempInternalOrders->comprador;
+        
+
             $InternalOrders->ncotizacion = $TempInternalOrders->ncotizacion;
             $InternalOrders->noha = $TempInternalOrders->noha;
             $InternalOrders->descuento = $TempInternalOrders->descuento;
             $InternalOrders->authorization_id = 1;
             $InternalOrders->category = $request->category;
             $InternalOrders->description = $request->description;
+
             $InternalOrders->save();
             $contactos=order_contacts::where('temp_order_id',$TempInternalOrders->id)->get();
             foreach($contactos as $c){
