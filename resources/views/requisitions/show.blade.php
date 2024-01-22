@@ -335,7 +335,7 @@
                
                <div class="col-sm-9 font-bold text-sm">
                <br><br>&nbsp;
-               <table align="left">
+               <table align="left" id='correos'>
 
                 <tr class="text-center"><th colspan="2">   Correos Personales </th></tr>
                 <tr class="text-center">
@@ -358,112 +358,80 @@
                
 
 
-            </div>
-            <div class="row p-4">
-                <div class="col-sm-4 col-xs-12 text-center text-xs font-bold">
-                    <table>
-                        <tr>
-                            <td>
-                                {{$Sellers->seller_name}}<br>
-                              <!--  {{$Sellers->seller_email.' '.$Sellers->seller_mobile}}-->
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td>
-                            {{$Sellers->firma}}
-                                <br>
-                                <hr><br><br>
+<br> <br> 
+           
+             
 
-                                Elaboró
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="col-sm-3 col-xs-12 text-center text-xs font-bold">
-                    &nbsp;
-                </div>
+           <table style="border: none;">
+            <tr  style="border: none;">
+                <td style="border: none;"><table  style="border: none; ">
+                    <tr style="border: none; border-collapse: collapse;">
+                        <td style="border: none;">
+                            {{$Sellers->seller_name}}<br>
+                          <!--  {{$Sellers->seller_email.' '.$Sellers->seller_mobile}}-->
+                        </td>
+                    </tr>
+                    <tr style="border: none; ">
+                        <td style="border: none;">&nbsp;</td>
+                    </tr>
+                    <tr style="border: none;">
+                        <td style="border: none;">&nbsp;</td>
+                    </tr>
+                    <tr style="border: none;">
+                        <td  style="border: none;">
+                        {{$Sellers->firma}}
+                            <br>
+                            <hr style="border-top: 0.3vw solid black; border-color:#000000"><br><br>
+
+                            Elaboró
+                        </td>
+                    </tr>
+                </table></td>
+
+                @foreach ($requiredSignatures as $firma)
+   
+<td style="border: none;">
+   <ul>
+       <li>
+           <div class="row">
+
+
+               @if($firma->status == 0)
+               <form action="{{ route('requisition.firmar') }}" method="POST" enctype="multipart/form-data">
+               @csrf
+               <x-jet-input type="hidden" name="signature_id" value="{{$firma->id}}"/>
+               <div class="col">
+                   <span class="text-xs uppercase">Firma: {{$firma->job}}</span><br>
+               </div>
+
+               <div class="row">
+                   <div class="col">
+                       <x-jet-input type="password" name="key" class="w-flex text-xs"/>
+                   </div>
+                   <div class="col">
+                       <button class="btn btn-green">Firmar</button>
+                   </div>
+               </div>
+               </form>
+               @else
+               <table  style="border: none; border-collapse: collapse;">
+                   <tbody>
+                       <tr style="font-size:16px; font-weight:bold"><td>{{$firma->firma}}</td></tr>
+                       <tr><td><span style="font-size: 17px"> <i style="color : green"  class="fa fa-check-circle" aria-hidden="true"></i> Autorizado por  {{$firma->job}} </span>
+               </td></tr>
+                   </tbody>
+               </table>
                 
-                <div class="col-sm-5 col-xs-12 text-center text-xs font-bold">
-                    <br>
-                    {{-- <form action="{{ route('requisicion.dgi') }}" method="POST" enctype="multipart/form-data">
-                                    @csrf
-                                    
-                    <x-jet-input type="hidden" name="order_id" value="{{$InternalOrders->id}}"/>
-                           
-                                     <select class="form-capture  w-full text-md uppercase" name="seller_id" style='width: 50%;'>
-                                            @foreach ($ASellers as $row)
-                                                <option value="{{$row->id}}" @if ($row->id == old('seller_id')) selected @endif >{{$row->seller_name}}</option>
-                                            @endforeach
-                                        </select>
-                    
-                                    <div class="form-group">
-                                    <div class="row">
-                                      <div class=col>
-                                        <x-jet-label value="dgi" />
-                                        <input type="number" name="dgi" style='width: 50%;'max=100 min=0 step=0.1 value=0> %
-                                        <x-jet-input-error for='seller_id' />
-                                    </div>
-                                    <div class="col">
-                                            <button class="btn btn-blue">Agregar Comision DGI</button>
-                                        </div></div>
-                                    </div>
-                                    
-                    
-                      </form> --}}
-                      
-                            
-                      
-                     @foreach ($requiredSignatures as $firma)
-       
-
-                        <ul>
-                            <li>
-                                <div class="row">
-
-
-                                    @if($firma->status == 0)
-                                    <form action="{{ route('requisition.firmar') }}" method="POST" enctype="multipart/form-data">
-                                    @csrf
-                                    <x-jet-input type="hidden" name="signature_id" value="{{$firma->id}}"/>
-                                    <div class="col">
-                                        <span class="text-xs uppercase">Firma: {{$firma->job}}</span><br>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col">
-                                            <x-jet-input type="password" name="key" class="w-flex text-xs"/>
-                                        </div>
-                                        <div class="col">
-                                            <button class="btn btn-green">Firmar</button>
-                                        </div>
-                                    </div>
-                                    </form>
-                                    @else
-                                    <table>
-                                        <tbody>
-                                            <tr style="font-size:16px; font-weight:bold"><td>{{$firma->firma}}</td></tr>
-                                            <tr><td><span style="font-size: 17px"> <i style="color : green"  class="fa fa-check-circle" aria-hidden="true"></i> Autorizado por  {{$firma->job}} </span>
-                                    </td></tr>
-                                        </tbody>
-                                    </table>
-                                     
-                                    <br><br><br><br>
-                                    @endif
-                                </div>
-                            </li>
-                        </ul>
-                    @endforeach
-                    <br>
-                    <hr><br>
-                    Autorizaciones
-                </div>
-            </div>
+               <br><br><br><br>
+               @endif
+           </div>
+       </li>
+   </ul>
+   </td>
+@endforeach
+            </tr>
+           </table>
+             
             <br> <br> 
             @if($InternalOrders->status == 'autorizado')
             <br><br><br><br><br>
