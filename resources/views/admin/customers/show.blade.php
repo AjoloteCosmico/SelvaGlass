@@ -56,8 +56,7 @@
                                     <option value="POR ASIGNAR" @if($Customers->legal_name=='POR ASIGNAR') selected @endif>POR ASIGNAR </option>
                                     <option value="otra" @if($Customers->legal_name=='otra') selected @endif >OTRA </option>
                                     <option value="" > </option>
-                                    
-                                    
+   
                                 </select>
                                 <br>
                                 <x-jet-input type="text" name="otra" id='otra' class="w-full text-xs " value="{{$Customers->otra}}" style='display: none;' onkeyup="javascript:this.value=this.value.toUpperCase();"/>
@@ -73,6 +72,19 @@
                                 <x-jet-label value="* RFC" />
                                 <x-jet-input type="text" name="customer_rfc" class="w-full text-xs uppercase" value="{{$Customers->customer_rfc}}" />
                                 <x-jet-input-error for='customer_rfc' />
+                            </div>
+                            <div class="form-group">
+                                <x-jet-label value="* Regimen Fiscal" />
+                                <select class="form-capture  w-full text-xs uppercase" id="regimen_fiscal" name="regimen_fiscal">
+                                @foreach($Regimenes as $regimen)
+                                <option value="{{$regimen->clave}}" @if($regimen->clave == old('regimen_fiscal')) selected @endif> {{$regimen->clave}} {{$regimen->description}}</option>
+                                @endforeach
+                                    <option value="" > </option>
+                                    
+                                    
+                                </select>
+                                
+                                <x-jet-input-error for='regimen_fiscal' />
                             </div>
                             <div class="form-group">
                                 <x-jet-label value="* Email Coorporativo" />

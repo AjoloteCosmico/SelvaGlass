@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Customer;
 use App\Models\CustomerContact;
 use Illuminate\Http\Request;
+use DB;
 use Session;
 class CustomerController extends Controller
 {
@@ -18,7 +19,8 @@ class CustomerController extends Controller
         ));
     }
     public function create(){
-        return view('admin.customers.create');
+        $Regimenes=DB::table('regimenes')->get();
+        return view('admin.customers.create',compact('Regimenes'));
     }
 
     public function validar_rfc()
@@ -115,13 +117,14 @@ class CustomerController extends Controller
 
     public function edit($id)
     {
+        $Regimenes=DB::table('regimenes')->get();
         $Customers = Customer::find($id);
         $Contacts = CustomerContact::where('customer_id', $id)->get();
         $nc=$Contacts->count();
         return view('admin.customers.show', compact(
             'Customers', 
             'Contacts',
-            'nc'
+            'nc','Regimenes'
         ));
     }
 
