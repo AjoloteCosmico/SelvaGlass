@@ -315,6 +315,12 @@ return [
             'route'  => 'requisition.index',
             'can'  => 'VER PEDIDOS',
         ],
+        [
+            'text' => 'GASTOS FIJOS',
+            'icon' => 'fas fa-clipboard-check fa-fw',
+            'route'  => 'bills.index',
+            'can'  => 'VER PEDIDOS',
+        ],
         // [
         //     'header' => '===================',
         // ],

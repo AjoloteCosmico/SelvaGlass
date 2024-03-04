@@ -8,6 +8,9 @@ use App\Http\Controllers\PaymentsController;
 use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\FactureController;
 use App\Http\Controllers\CobrosController;
+
+use App\Http\Controllers\BillsController;
+use App\Http\Controllers\BillsPeriodController;
 use App\Http\Controllers\UlamaController;
 use App\Http\Controllers\PruebaController;
 use App\Http\Controllers\NotasCreditoController;
@@ -35,6 +38,8 @@ Route::group(['middleware' => ['auth']], function()
     Route::post('embarque/postear/{id}', [RequisitionController::class, 'shipment'])->name('embarque_requisicion');
     
     Route::resource('requisition', RequisitionController::class);
+    Route::resource('bills', BillsController::class);
+    Route::resource('bills_period', BillsPeriodController::class);
     Route::resource('temp_items', TempItemController::class);
     Route::resource('items', ItemController::class);
     Route::resource('cuentas_cobrar', PaymentsController::class);
