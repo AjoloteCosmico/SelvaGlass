@@ -3,7 +3,7 @@
 @section('title', 'GASTOS FIJOS')
 
 @section('content_header')
-    <h1 class="font-bold"><i class="fa-solid fa-clipboard-check"></i>&nbsp; REQUISICION DE COMPRA</h1>
+    <h1 class="font-bold"><i class="fa-solid fa-clipboard-check"></i>&nbsp; GASTOS FIJOS</h1>
     <script src="/Scripts/jquery.dataTables.js"></script>
 <script src="/Scripts/dataTables.bootstrap.js"></script>
     
@@ -39,20 +39,20 @@
                         <tr class="text-center">
                             <td>{{$row->id}}</td>
                             <td>{{$row->description}}</td>
-                            <td>{{$row->p_total}}</td>
+                            <td>$ {{number_format($row->p_total,2)}}</td>
                             <td class="w-15">
                                 <div class="row">
-                                    <div class="col-6 text-center w-10">
+                                    <div class="col-3 text-center">
                                         @can('VER PEDIDOS')
-                                        <a href="{{ route('requisition.show', $row->id)}}">
-                                            <i class="fa-solid fa-eye btn btn-blue  "></i></span>
+                                        <a class="btn btn-blue" href="{{ route('bills.show', $row->id)}}">
+                                            <i class="fa-solid fa-eye"> </i> 
                                         </a>
                                         @endcan
                                     </div>
-                                    <div class="col-6 text-center w-10">
+                                    <div class="col-3 text-center" style="padding:0,5vw">
                                         
                                         @can('BORRAR PEDIDOS')
-                                        <form class="DeleteReg" action="{{route('requisition.destroy', $row->id) }}" method="POST">
+                                        <form class="DeleteReg" action="{{route('bills.destroy', $row->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-red ">
@@ -97,6 +97,7 @@
 @if (session('update_reg') == 'ok')
 <script type="text/javascript" src="{{ asset('vendor/mystylesjs/js/update_reg.js') }}"></script>
 @endif
+
 
 <script>
     new DataTable('#t');
