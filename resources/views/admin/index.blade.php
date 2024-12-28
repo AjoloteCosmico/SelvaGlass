@@ -3,7 +3,7 @@
 @section('title', 'Configuración')
 
 @section('content_header')
-    <h1 class="font-bold"><i class="fas fa-coins"></i> TYRSAWES - CUENTAS X PAGAR </h1>
+    <h1 class="font-bold"><i class="fas fa-coins"></i> SELVA GLASS SOFTWARE ADMINISTRATIVO </h1>
 @stop
 
 @section('content')
@@ -16,7 +16,7 @@
                 </div>
                 <div class="card-body">
                     <center>
-                        <img src="{{ asset('vendor/img/logo.png') }}" width="500" class="text-center" alt="logo">
+                        <img src="{{ asset('vendor/img/logo.jpeg') }}" width="500" class="text-center" alt="logo">
                     </center>
                 </div>
             </div>

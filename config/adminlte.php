@@ -16,7 +16,7 @@ return [
 
     'title' => '',
     'title_prefix' => '',
-    'title_postfix' => ' | TYRSAWES-CUENTAS X PAGAR',
+    'title_postfix' => ' | SELVA GLASS SOFTWARE ADMINISTRATIVO',
 
     /*
     |--------------------------------------------------------------------------
@@ -45,12 +45,12 @@ return [
     |
     */
 
-    'logo' => '<b>TYRSAWES</b>-ADMIN',
-    'logo_img' => 'vendor/img/logo.svg',
+    'logo' => '<b>SELVA GLASS',
+    'logo_img' => 'vendor/img/logo.jpeg',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'TYRSA CONSORCIO S.A. DE C.V.',
+    'logo_img_alt' => 'SELVA GLASS S.A. DE C.V.',
 
     /*
     |--------------------------------------------------------------------------
@@ -254,7 +254,6 @@ return [
                     'text' => ' USUARIOS',
                     'icon' => 'fas fa-users fa-fw',
                     'route'  => 'users.index',
-                    'can'  => 'VER USUARIOS',
                 ],
                 [
                     'text' => ' EMPRESA',
@@ -269,35 +268,11 @@ return [
                     'can'  => 'VER CONFIGURACIONES',
                 ],
                 [
-                    'text' => ' BANCOS',
-                    'icon' => 'fas fa-bank fa-fw',
-                    'route'  => 'banks.index',
-                    'can'  => 'VER MONEDAS',
-                ],
-                [
-                    'text' => ' MONEDAS',
-                    'icon' => 'fas fa-money-bill-1 fa-fw',
-                    'route'  => 'coins.index',
-                    'can'  => 'VER MONEDAS',
-                ],
-                [
-                    'text' => 'PROVEEDORES',
+                    'text' => 'CLIENTES',
                     'icon' => 'fas fa-users-cog fa-fw',
                     'route'  => 'customers.index',
                     'can'  => 'VER CLIENTES',
                 ],
-                [
-                    'text' => 'NIVEL AUTORIZACIÓN',
-                    'icon' => 'fas fa-fingerprint fa-fw',
-                    'route'  => 'authorizations.index',
-                    'can'  => 'VER AUTORIZACIONES',
-                ],
-                // [
-                //     'text' => 'CONTACTOS',
-                //     'icon' => 'fas fa-user-tie fa-fw',
-                //     'route'  => 'customer_contacts.index',
-                //     'can'  => 'VER CONTACTOS',
-                // ],
                 
             ],
             'can' => 'CATALOGOS',
@@ -306,119 +281,26 @@ return [
             'header' => '===================',
         ],
         [
-            'header' => 'ORDENES DE COMPRA',
+            'header' => 'ORDENES DE TRABAJO',
             'can' => 'PEDIDOS',
         ],
         [
-            'text' => 'REQUISICION',
+            'text' => 'ORDEN DE TRABAJO',
             'icon' => 'fas fa-clipboard-check fa-fw',
             'route'  => 'requisition.index',
             'can'  => 'VER PEDIDOS',
         ],
         [
-            'text' => 'GASTOS FIJOS',
+            'text' => 'INVENTARIO',
             'icon' => 'fas fa-clipboard-check fa-fw',
             'route'  => 'bills.index',
             'can'  => 'VER PEDIDOS',
         ],
-        // [
-        //     'header' => '===================',
-        // ],
-        // [
-        //     'header' => 'CONTABILIDAD',
-        //     'can' => 'CONTABILIDAD',
-        // ],
-        // // [
-        // //     'text' => 'CUENTAS POR COBRAR',
-        // //     'icon' => 'fas fa-money-check',
-        // //     'url' => 'cuentas_cobrar',
-        // //     'route'  => 'cuentas_cobrar',
-        // //     'can' => 'VER CUENTAS X COBRAR',
-        // // ],
-        // [
-        //     'text' => 'FACTURAS',
-        //     'icon' => 'fas fa-file',
-        //     'url' => 'factures',
-        //     'route'  => 'factures',
-        //     'can' => 'VER FACTURAS',
-        // ],
-        // [
-        //     'text' => 'NOTAS DE CREDITO ',
-        //     'icon' => 'fas fa-file ',
-        //     'url' => 'credit_notes',
-        //     'route'  => 'credit_notes',
-        //     'can' => 'VER NOTAS',
-        // ],
-        // [
-        //     'text' => 'PAGOS',
-        //     'icon' => 'fa fa-money ',
-        //     'url' => 'cobros',
-        //     'route'  => 'cobros',
-        //     'can' => 'VER COBROS',
-        // ],
-       
-        
-        // [
-        //     'text' => 'CUENTAS COBRADAS',
-        //     'icon' => 'fas fa-money-check fa-fw',
-            
-        //     'route'  => 'payed_accounts',
-        //     'can' => 'VER APLICACIONES DE PAGO',
-        // ],
         
         [
             'header' => '===============',
             //'can' => 'Reportes',
         ],
-    //     [
-    //         'text' => 'REPORTES',
-    //         'icon' => 'fas fa-list fa-fw',
-    //         'submenu' => [
-    //             [
-    //                 'text' => ' CONTRAPORTADA',
-    //                 'icon' => 'fas fa-file fa-fw',
-    //                 'route'  => 'reportes.contraportada',
-    //                 'can'  => 'DESCARGAR CONTRAPORTADA',
-    //             ],
-    //             [
-    //                 'text' => ' CUENTAS POR COBRAR',
-    //                 'icon' => 'fas fa-file fa-fw',
-    //                 'route'  => 'reportes.cuentas_cobrar',
-    //                 'can'  => 'DESCARGAR CXC',
-    //             ],
-    //             [
-    //                 'text' => ' CONSECUTIVO DE PEDIDOS INTERNOS',
-    //                 'icon' => 'fas fa-file fa-fw',
-    //                 'route'  => 'payments.consecutivo_pedido',
-    //                 'can'  => 'DESCARGAR CONSECUTIVO PI',
-    //             ],
-    //             [
-    //                 'text' => ' FACTURA RESUMIDA',
-    //                 'icon' => 'fas fa-file fa-fw',
-    //                 'route'  => 'reportes.factura_resumida',
-    //                 'can'  => 'DESCARGAR FACTURA RESUMIDA',
-    //             ],
-    //             [
-    //                 'text' => ' CONSECUTIVO DE FACTURAS',
-    //                 'icon' => 'fas fa-file fa-fw',
-    //                 'route'  => 'reportes.consecutivo_factura',
-    //                 'can'  => 'DESCARGAR CONSECUTIVO FACTURAS',
-    //             ],
-    //             [
-    //                 'text' => ' COMPROBANTE DE INGRESOS VENTAS',
-    //                 'icon' => 'fas fa-file fa-fw',
-    //                 'route'  => 'reportes.comprobante_ingresos',
-    //                 'can'  => 'DESCARGAR RESUMEN COMPROBANTE',
-    //             ],
-    //             [
-    //                 'text' => ' CONSECUTIVO DE COMPROBANTES DE INGRESOS',
-    //                 'icon' => 'fas fa-file fa-fw',
-    //                 'route'  => 'reportes.consecutivo_comprobante',
-    //                 'can'  => 'DESCARGAR CONSECUTIVO COMPROBANTE',
-    //             ],
-                
-    //     ],
-    // ],
 ],
 
     /*

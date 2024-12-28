@@ -11,7 +11,7 @@ class UserSeeder extends Seeder
     {
         DB::table('users')->insert([
             'name' => 'Super Usuario',
-            'email' => 'root@tyrsawes.site',
+            'email' => 'root@selvaglass.site',
             'email_verified_at' => '2022/06/01',
             'password' => '$2y$10$arcj2ZcemHQQInZVq5ZAvOlFrsqkaUryfASuEyVr2mi8E.3mdZGry',
             'created_at' => '2022/06/01 00:00:01',
@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
         ]);
         DB::table('users')->insert([
             'name' => 'Administrador del Sistema',
-            'email' => 'admin@tyrsawes.site',
+            'email' => 'admin@selvaglass.site',
             'email_verified_at' => '2022/06/01',
             'password' => '$2y$10$arcj2ZcemHQQInZVq5ZAvOlFrsqkaUryfASuEyVr2mi8E.3mdZGry',
             'created_at' => '2022/06/01 00:00:01',
@@ -27,7 +27,7 @@ class UserSeeder extends Seeder
         ]);
         DB::table('users')->insert([
             'name' => 'Usuario del Sistema',
-            'email' => 'user@tyrsawes.site',
+            'email' => 'user@selvaglass.site',
             'email_verified_at' => '2022/06/01',
             'password' => '$2y$10$arcj2ZcemHQQInZVq5ZAvOlFrsqkaUryfASuEyVr2mi8E.3mdZGry',
             'created_at' => '2022/06/01 00:00:01',
