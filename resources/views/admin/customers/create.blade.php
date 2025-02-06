@@ -12,7 +12,7 @@
             <h5 class="card-title p-2">
                 <i class="fas fa-plus-circle"></i>&nbsp; Agregar Cliente:
             </h5>
-        </div>
+        </div >
         <form action="{{ route('customers.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="row rounded-b-lg rounded-t-none mb-4 shadow-xl bg-gray-300">
@@ -24,66 +24,96 @@
                         </div>
                         <div class="card-body">
                             <div class="form-group">
+                                <x-jet-label value=" Num. Cliente" />
+                                <x-jet-input type="text" name="clave" class="w-full text-xs " />
+                                <x-jet-input-error for='clave' />
+                            </div>
+                            <div class="form-group">
                                 <x-jet-label value="* Nombre o Razón Social" />
                                 <x-jet-input type="text" name="customer" class="w-full text-xs " value="{{old('customer')}}" onkeyup="javascript:this.value=this.value.toUpperCase();"/>
                                 <x-jet-input-error for='customer' />
                             </div>
-                            <div class="form-group">
-                                <x-jet-label value="* Regimen de Capital" />
-                                <select class="form-capture  w-full text-xs uppercase" id="legal_name" name="legal_name">
-                                
-                                    <option value="FISICA CAEYP" > PERSONA FISICA CON ACTIVIDADES EMPRESARIALES Y PROFESIONALES </option>
-                                    <option value="S.A." >SOCIEDAD ANONIMA </option>
-                                    <option value="S.A. DE C.V." > SOCIEDAD ANONIMA DE CAPITAL VARIABLE </option>
-                                    <option value="S DE R.L DE C.V." >SOCIEDAD DE RESPONSABILIDAD LIMITADA DE CAPITAL VARIABLE </option>
-                                    <option value="SAPI" >SOCIEDAD ANONIMA PROMOTORA DE INVERSION </option>
-                                    <option value="SAPI DE C.V." > SOCIEDAD ANONIMA PROMOTORA DE INVERSION DE CAPITAL VARIABLE</option>
-                                    <option value="SAS" > SOCIEDAD POR ACCIONES SIMPLIFICADA</option>
-                                    <option value="S.C" >SOCIEDAD COOPERATIVA </option>
-                                    <option value="S en N. C" > SOCIEDAD EN NOMBRE COLECTIVO</option>
-                                    <option value="S en N. C DE C.V." > SOCIEDAD EN NOMBRE COLECTIVO DE CAPITAL VARIABLE S en N. C DE C.V</option>
-                                    <option value="S en C" >SOCIEDAD EN COMANDITA SIMPLE </option>
-                                    <option value="S.C.A" >SOCIEDAD EN COMANDITA POR ACCIONES </option>
-                                    
-                                    <option value="R.S.C" >REGIMEN SIMPLIFICADO DE CONFIANZA </option>
-                                    <option value="POR ASIGNAR" >POR ASIGNAR </option>
-                                    <option value="otra" >OTRA </option>
-                                    <option value="" > </option>
-                                    
-                                    
-                                </select>
-                                <br>
-                                <x-jet-input type="text" name="otra" id='otra' class="w-full text-xs " style='display: none;' onkeyup="javascript:this.value=this.value.toUpperCase();"/>
-                                
-                                <x-jet-input-error for='legal_name' />
-                            </div>
-                            <div class="form-group">
-                                <x-jet-label value="* Nombre Corto" />
-                                <x-jet-input type="text" name="alias" class="w-full text-xs " value="{{old('customer')}}" onkeyup="javascript:this.value=this.value.toUpperCase();"/>
-                                <x-jet-input-error for='alias' />
-                            </div>
+                            
+                            
                             <div class="form-group">
                                 <x-jet-label value="* RFC" />
-                                <x-jet-input type="text" name="customer_rfc" class="w-full text-xs " value="{{session('rfc')}}"/>
+                                <x-jet-input type="text" name="customer_rfc" class="w-full text-xs " value="{{session('rfc')}}" disabled/>
                                 <x-jet-input-error for='customer_rfc' />
                             </div>
                             <div class="form-group">
-                                <x-jet-label value="* Regimen Fiscal" />
-                                <select class="form-capture  w-full text-xs uppercase" id="regimen_fiscal" name="regimen_fiscal">
-                                @foreach($Regimenes as $regimen)
-                                <option value="{{$regimen->clave}}" @if($regimen->clave == old('regimen_fiscal')) selected @endif> {{$regimen->clave}} {{$regimen->description}}</option>
-                                @endforeach
-                                    <option value="" > </option>
-                                    
+                                <x-jet-label value="* Tipo de CLiente" />
+                                <select class="form-capture  w-full text-xs uppercase"  name="type">
+                 
+                                    <option value="ESPECIAL" @if(old('type')=='ESPECIAL') selected @endif> ESPECIAL</option>
+                                    <option value="MAYORISTA" @if(old('type')=='MAYORISTA') selected @endif> MAYORISTA</option>
+                                    <option value="OBRA" @if(old('type')=='OBRA') selected @endif> OBRA</option>
+                                    <option value="VENTA A PUBLICO" @if(old('type')=='VENTA A PUBLICO') selected @endif> VENTA A PUBLICO</option>
+                                    <option value="VIDRIERO" @if(old('type')=='VIDRIERO') selected @endif> VIDRIERO</option>
+                                      
+                                </select>
+                                
+                                <x-jet-input-error for='type' />
+                            </div>
+                            <div class="form-group">
+                                <x-jet-label value="* Credito" />
+                                <select class="form-capture  w-full text-xs uppercase"  name="credit">
+                 
+                                    <option value="SI" @if(old('credit')=='SI') selected @endif>SI</option>
+                                    <option value="NO" @if(old('credit')=='NO') selected @endif>NO</option>
                                     
                                 </select>
                                 
-                                <x-jet-input-error for='regimen_fiscal' />
+                                <x-jet-input-error for='credit' />
                             </div>
                             <div class="form-group">
-                                <x-jet-label value=" Clave Cliente" />
-                                <x-jet-input type="text" name="clave" class="w-full text-xs " />
-                                <x-jet-input-error for='clave' />
+                                <x-jet-label value="* Dias de credito" />
+                                <x-jet-input type="number" name="credit_days" class="w-full text-xs " value="{{old('credit_days')}}"/>
+                                <x-jet-input-error for='credit_days' />
+                            </div>
+                            <div class="form-group">
+                                <x-jet-label value="* Saldo otorgado" />
+                                <x-jet-input type="number" name="greated_balance" class="w-full text-xs " value="{{old('greated_balance')}}"/>
+                                <x-jet-input-error for='greated_balance' />
+                            </div>
+                            <div class="form-group">
+                                <x-jet-label value="* Saldo disponible" />
+                                <x-jet-input type="number" name="available_balance" class="w-full text-xs " value="{{old('available_balance')}}"/>
+                                <x-jet-input-error for='available_balance' />
+                            </div>
+                            <div class="form-group">
+                                <x-jet-label value="* Status" />
+                                <select class="form-capture  w-full text-xs uppercase"  name="status">
+                 
+                                    <option value="ACTIVO" @if(old('status')=='ACTIVO') selected @endif>INACTIVO</option>
+                                    <option value="INACTIVO" @if(old('status')=='INACTIVO') selected @endif>ACTIVO</option>
+                                    
+                                </select>
+                                
+                                <x-jet-input-error for='status' />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xs-12 shadow rounded-xl p4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h1 class="h5 text-center fw">Datos del contacto</h1>
+                        </div>
+                        <div class="card-body">
+                        <div class="form-group">
+                                <x-jet-label value="* Nombre del contacto" />
+                                <x-jet-input type="text" name="contact_name" class="w-full text-xs " value="{{old('contact_name')}}"/>
+                                <x-jet-input-error for='contact_name' />
+                        </div>
+                        <div class="form-group">
+                                <x-jet-label value="* Puesto del contacto" />
+                                <x-jet-input type="text" name="contact_charge" class="w-full text-xs " value="{{old('contact_charge')}}"/>
+                                <x-jet-input-error for='contact_charge' />
+                        </div>
+                        <div class="form-group">
+                                <x-jet-label value="* Email Personal" />
+                                <x-jet-input type="text" name="contact_email" class="w-full text-xs " value="{{old('contact_email')}}"/>
+                                <x-jet-input-error for='contact_email' />
                             </div>
                             <div class="form-group">
                                 <x-jet-label value="* Email Coorporativo" />
@@ -91,7 +121,12 @@
                                 <x-jet-input-error for='customer_email' />
                             </div>
                             <div class="form-group">
-                                <x-jet-label value="* Teléfono fiscal" />
+                                <x-jet-label value="* Teléfono Personal" />
+                                <x-jet-input type="text" name="contact_telephone" class="w-full text-xs " value="{{old('contact_telephone')}}"/>
+                                <x-jet-input-error for='contact_telephone' />
+                            </div>
+                            <div class="form-group">
+                                <x-jet-label value="* Teléfono Empresarial" />
                                 <x-jet-input type="text" name="customer_telephone" class="w-full text-xs " value="{{old('customer_telephone')}}"/>
                                 <x-jet-input-error for='customer_telephone' />
                             </div>
