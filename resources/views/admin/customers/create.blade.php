@@ -88,7 +88,6 @@
                                     <option value="INACTIVO" @if(old('status')=='INACTIVO') selected @endif>ACTIVO</option>
                                     
                                 </select>
-                                
                                 <x-jet-input-error for='status' />
                             </div>
                         </div>

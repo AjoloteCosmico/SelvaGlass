@@ -22,7 +22,6 @@
             <table id="example"  class="table table-striped text-xs font-medium" >
                     <thead>
                         <tr>
-                            
                             <th>Clave</th>
                             <th>Razón Social</th>
                             
@@ -30,7 +29,7 @@
                             <th>Nombre Corto</th>
                             <th>RFC</th>
                             <th>Municipio</th>
-                            
+
                             <th>Teléfono</th>
                             <th style="width : 10%;">&nbsp;&nbsp; </th>
                         </tr>
