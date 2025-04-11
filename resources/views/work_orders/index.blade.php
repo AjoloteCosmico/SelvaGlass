@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'CLIENTES')
+@section('title', 'ORDEN DE TRABAJO')
 
 @section('content_header')
     <h1 class="font-bold"><i class="fas fa-file"></i>&nbsp; ORDENES DE TRABAJO</h1>
@@ -37,7 +37,7 @@
                             <td>{{$row->id}}</td>
                             <td>{{$row->customer}}</td>
                             
-                            <td>{{$row->seller}}</td>
+                            <td>VENDEDOR PRUEBA</td>
                             <td>{{$row->process}}</td>
                             <td> </td>
                             <td class="w-15">

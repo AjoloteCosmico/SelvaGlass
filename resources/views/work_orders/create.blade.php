@@ -23,6 +23,15 @@
                             <h1 class="h5 text-center fw">Datos Generales</h1>
                         </div>
                         <div class="card-body">
+                        <div class="form-group">
+                               <x-jet-label value="* Cliente" />
+                                <select class="form-capture  w-full text-xs uppercase"  name='cliente'> 
+                                    @foreach($Customers as $row)
+                                    <option value='{{$row->id}}' @if(old('cliente"')==$row->id) selected @endif>{{$row->customer}} </option>
+                                    @endforeach
+                                 </select>
+                              <x-jet-input-error for='cliente' />
+                            </div>
                             <div class="form-group">
                                 <x-jet-label value=" Descripcion del Producto" />
                                 <x-jet-input type="text" name="descripcion" class="w-full text-xs " />
@@ -31,7 +40,7 @@
                            
                             <div class="form-group">
                                <x-jet-label value="* Tipo de producto" />
-                                <select class="form-capture  w-full text-xs uppercase"  name='product_type"'> 
+                                <select class="form-capture  w-full text-xs uppercase"  name='product_type'> 
                                     <option value='HOJA' @if(old('product_type"')=='HOJA') selected @endif> HOJA</option>
                                     <option value='CORTE' @if(old('product_type"')=='CORTE') selected @endif> CORTE</option>
                                     <option value='MAQUILA' @if(old('product_type"')=='MAQUILA') selected @endif> MAQUILA</option>
@@ -74,7 +83,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-6 col-xs-12 shadow rounded-xl p4">
+                <!-- <div class="col-sm-6 col-xs-12 shadow rounded-xl p4">
                     <div class="card">
                         <div class="card-header">
                             <h1 class="h5 text-center fw">Datos del contacto</h1>
@@ -156,7 +165,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
             <div class="col-12 text-right p-2 gap-2">
                 <a href="{{ route('customers.index')}}" class="btn btn-black mb-2">
@@ -176,7 +185,7 @@
 @stop
 
 @section('js')
-<script type="text/javascript" src="{{ asset('vendor/mystylesjs/js/rfc_disponible.js') }}"></script>
+<!-- <script type="text/javascript" src="{{ asset('vendor/mystylesjs/js/rfc_disponible.js') }}"></script> -->
 
 <script>
     $(document).ready(function () {     
