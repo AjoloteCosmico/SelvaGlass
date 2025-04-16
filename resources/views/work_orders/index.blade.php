@@ -1,17 +1,17 @@
 @extends('adminlte::page')
 
-@section('title', 'CLIENTES')
+@section('title', 'ORDEN DE TRABAJO')
 
 @section('content_header')
-    <h1 class="font-bold"><i class="fas fa-users-cog"></i>&nbsp; CLIENTES</h1>
+    <h1 class="font-bold"><i class="fas fa-file"></i>&nbsp; ORDENES DE TRABAJO</h1>
 @stop
 
 @section('content')
     <div class="container-flex m-1 bg-gray-300 shadow-lg rounded-lg">
         <div class="row p-3 m-2 rounded-lg shadow-xl bg-white">
             <div class="col-sm-12 text-right">
-                @can('CREAR CLIENTES')
-                <a href="{{ route('customers.validar_rfc')}}" class="btn btn-green">
+                @can('CREAR ORDEN')
+                <a href="{{ route('work_orders.create')}}" class="btn btn-green">
                     <i class="fas fa-plus-circle"></i>&nbsp; Nueva
                 </a>
                 @endcan
@@ -22,36 +22,29 @@
             <table id="example"  class="table table-striped text-xs font-medium" >
                     <thead>
                         <tr>
-                            <th>Clave</th>
-                            <th>Razón Social</th>
+                            <th>Id</th>
+                            <th>Vendedor</th>
                             
-                            <th>Regimen de Capital</th>
+                            <th>Cliente</th>
                             <th>Nombre Corto</th>
-                            <th>RFC</th>
-                            <th>Municipio</th>
-
-                            <th>Teléfono</th>
+                            <th>Proceso</th>
                             <th style="width : 10%;">&nbsp;&nbsp; </th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($Customers as $row)
+                        @foreach ($Orders as $row)
                         <tr>
-                            <td>{{$row->clave}}</td>
+                            <td>{{$row->id}}</td>
                             <td>{{$row->customer}}</td>
                             
-                            <td>{{$row->legal_name}}</td>
-                            <td>{{$row->alias}}</td>
-                            <td>{{$row->customer_rfc}}</td>
-                            <!-- <td>{{$row->customer_state}}</td> -->
-                            <td>{{$row->customer_city}}</td>
-                            <!-- <td>{{$row->customer_email}}</td> -->
-                            <td>{{$row->customer_telephone}}</td>
+                            <td>VENDEDOR PRUEBA</td>
+                            <td>{{$row->process}}</td>
+                            <td> </td>
                             <td class="w-15">
                                 <div class="row">
                                     <div class="col-6 text-center w-10">
-                                        @can('EDITAR CLIENTES')
-                                        <a href="{{ route('customers.edit', $row->id)}}">
+                                        @can('EDITAR ORDEN')
+                                        <a href="{{ route('work_orders.edit', $row->id)}}">
                                         <button type="submit" class="btn btn-blue ">
                                                 <i class="fas fa-edit items-center fa-xl"></i>
                                             </button>
@@ -60,8 +53,8 @@
                                     </div>
                                     &nbsp;&nbsp;
                                     <div class="col-6 text-center w-10">
-                                        @can('BORRAR CLIENTES')
-                                        <form class="DeleteReg" action="{{ route('customers.destroy', $row->id) }}" method="POST">
+                                        @can('BORRAR ORDEN')
+                                        <form class="DeleteReg" action="{{ route('work_orders.destroy', $row->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-red">

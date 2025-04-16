@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\RequisitionController;
+use App\Http\Controllers\WorkOrderController;
 use App\Http\Controllers\TempItemController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\PaymentsController;
@@ -38,6 +38,7 @@ Route::group(['middleware' => ['auth']], function()
     Route::post('embarque/postear/{id}', [RequisitionController::class, 'shipment'])->name('embarque_requisicion');
     
     Route::resource('requisition', RequisitionController::class);
+    Route::resource('work_orders', WorkOrderController::class);
     Route::resource('bills', BillsController::class);
     Route::resource('bills_period', BillsPeriodController::class);
     Route::resource('temp_items', TempItemController::class);
@@ -57,8 +58,6 @@ Route::group(['middleware' => ['auth']], function()
     Route::get('cobros/revisar/{id}', [CobrosController::class, 'revisar'])->name('cobros.revisar');
     Route::get('cobros/autorizar/{id}', [CobrosController::class, 'autorizar'])->name('cobros.autorizar');
     Route::get('aberelpdf/{name}', [ReportsController::class, 'prueba'])->name('pdf.prueba');
-    
-
 
     Route::get('accounting/payed_accounts', [PaymentsController::class, 'payed_accounts'])->name('payed_accounts');
    //rutas para generar reportes

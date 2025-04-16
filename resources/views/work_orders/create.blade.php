@@ -3,17 +3,17 @@
 @section('title', 'CLIENTES')
 
 @section('content_header')
-    <h1 class="font-bold"><i class="fas fa-users-cog"></i>&nbsp; Cliente</h1>
+    <h1 class="font-bold"><i class="fas fa-users-cog"></i>&nbsp; Orden de Trabajo</h1>
 @stop
 
 @section('content')
     <div class="container bg-gray-300 shadow-lg rounded-lg">
         <div class="row rounded-b-none rounded-t-lg shadow-xl bg-white">
             <h5 class="card-title p-2">
-                <i class="fas fa-plus-circle"></i>&nbsp; Agregar Cliente:
+                <i class="fas fa-plus-circle"></i>&nbsp; Crear Nueva Orden de Trabajo::
             </h5>
         </div >
-        <form action="{{ route('customers.store')}}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('work_orders.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="row rounded-b-lg rounded-t-none mb-4 shadow-xl bg-gray-300">
             <div class="row p-4">
@@ -23,57 +23,47 @@
                             <h1 class="h5 text-center fw">Datos Generales</h1>
                         </div>
                         <div class="card-body">
-                            <div class="form-group">
-                                <x-jet-label value=" Num. Cliente" />
-                                <x-jet-input type="text" name="clave" class="w-full text-xs " />
-                                <x-jet-input-error for='clave' />
+                        <div class="form-group">
+                               <x-jet-label value="* Cliente" />
+                                <select class="form-capture  w-full text-xs uppercase"  name='cliente'> 
+                                    @foreach($Customers as $row)
+                                    <option value='{{$row->id}}' @if(old('cliente"')==$row->id) selected @endif>{{$row->customer}} </option>
+                                    @endforeach
+                                 </select>
+                              <x-jet-input-error for='cliente' />
                             </div>
                             <div class="form-group">
-                                <x-jet-label value="* Nombre o Razón Social" />
-                                <x-jet-input type="text" name="customer" class="w-full text-xs " value="{{old('customer')}}" onkeyup="javascript:this.value=this.value.toUpperCase();"/>
-                                <x-jet-input-error for='customer' />
+                                <x-jet-label value=" Descripcion del Producto" />
+                                <x-jet-input type="text" name="descripcion" class="w-full text-xs " />
+                                <x-jet-input-error for='descripcion' />
                             </div>
-                            
-                            
+                           
                             <div class="form-group">
-                                <x-jet-label value="* RFC" />
-                                <x-jet-input type="text" name="customer_rfc" class="w-full text-xs " value="{{session('rfc')}}" disabled/>
-                                <x-jet-input-error for='customer_rfc' />
-                            </div>
-                            <div class="form-group">
-                                <x-jet-label value="* Tipo de CLiente" />
-                                <select class="form-capture  w-full text-xs uppercase"  name="type">
-                 
-                                    <option value="ESPECIAL" @if(old('type')=='ESPECIAL') selected @endif> ESPECIAL</option>
-                                    <option value="MAYORISTA" @if(old('type')=='MAYORISTA') selected @endif> MAYORISTA</option>
-                                    <option value="OBRA" @if(old('type')=='OBRA') selected @endif> OBRA</option>
-                                    <option value="VENTA A PUBLICO" @if(old('type')=='VENTA A PUBLICO') selected @endif> VENTA A PUBLICO</option>
-                                    <option value="VIDRIERO" @if(old('type')=='VIDRIERO') selected @endif> VIDRIERO</option>
-                                      
+                               <x-jet-label value="* Tipo de producto" />
+                                <select class="form-capture  w-full text-xs uppercase"  name='product_type'> 
+                                    <option value='HOJA' @if(old('product_type"')=='HOJA') selected @endif> HOJA</option>
+                                    <option value='CORTE' @if(old('product_type"')=='CORTE') selected @endif> CORTE</option>
+                                    <option value='MAQUILA' @if(old('product_type"')=='MAQUILA') selected @endif> MAQUILA</option>
                                 </select>
-                                
-                                <x-jet-input-error for='type' />
+                              <x-jet-input-error for='type' />
+                            </div>
+                            <div class="form-group">      
+                                <x-jet-label value="* Tipo de Cristal" />
+                                    <select class="form-capture  w-full text-xs uppercase"  name='crystal_type'> 
+                                        <option value='TEMPLADO' @if(old('crystal_type')=='TEMPLADO') selected @endif> TEMPLADO</option>
+                                        <option value='SIN TEMPLAR' @if(old('crystal_type')=='SIN TEMPLAR') selected @endif> SIN TEMPLAR</option>
+                                    </select>
+                                    <x-jet-input-error for='crystal_type' />
+                                </div>
+                            <div class="form-group">
+                                <x-jet-label value="* Medida de largp" />
+                                <x-jet-input type="number" name="large" class="w-full text-xs " value="{{old('large')}}"/>
+                                <x-jet-input-error for='large' />
                             </div>
                             <div class="form-group">
-                                <x-jet-label value="* Credito" />
-                                <select class="form-capture  w-full text-xs uppercase"  name="credit">
-                 
-                                    <option value="SI" @if(old('credit')=='SI') selected @endif>SI</option>
-                                    <option value="NO" @if(old('credit')=='NO') selected @endif>NO</option>
-                                    
-                                </select>
-                                
-                                <x-jet-input-error for='credit' />
-                            </div>
-                            <div class="form-group">
-                                <x-jet-label value="* Dias de credito" />
-                                <x-jet-input type="number" name="credit_days" class="w-full text-xs " value="{{old('credit_days')}}"/>
-                                <x-jet-input-error for='credit_days' />
-                            </div>
-                            <div class="form-group">
-                                <x-jet-label value="* Saldo otorgado" />
-                                <x-jet-input type="number" name="greated_balance" class="w-full text-xs " value="{{old('greated_balance')}}"/>
-                                <x-jet-input-error for='greated_balance' />
+                                <x-jet-label value="* Medida de ancho" />
+                                <x-jet-input type="number" name="deep" class="w-full text-xs " value="{{old('deep')}}"/>
+                                <x-jet-input-error for='deep' />
                             </div>
                             <div class="form-group">
                                 <x-jet-label value="* Saldo disponible" />
@@ -93,7 +83,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-6 col-xs-12 shadow rounded-xl p4">
+                <!-- <div class="col-sm-6 col-xs-12 shadow rounded-xl p4">
                     <div class="card">
                         <div class="card-header">
                             <h1 class="h5 text-center fw">Datos del contacto</h1>
@@ -175,7 +165,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
             <div class="col-12 text-right p-2 gap-2">
                 <a href="{{ route('customers.index')}}" class="btn btn-black mb-2">
@@ -195,7 +185,7 @@
 @stop
 
 @section('js')
-<script type="text/javascript" src="{{ asset('vendor/mystylesjs/js/rfc_disponible.js') }}"></script>
+<!-- <script type="text/javascript" src="{{ asset('vendor/mystylesjs/js/rfc_disponible.js') }}"></script> -->
 
 <script>
     $(document).ready(function () {     

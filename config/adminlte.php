@@ -287,7 +287,7 @@ return [
         [
             'text' => 'ORDEN DE TRABAJO',
             'icon' => 'fas fa-clipboard-check fa-fw',
-            'route'  => 'requisition.index',
+            'route'  => 'work_orders.index',
             'can'  => 'VER PEDIDOS',
         ],
         [
