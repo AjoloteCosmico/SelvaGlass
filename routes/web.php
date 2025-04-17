@@ -8,6 +8,7 @@ use App\Http\Controllers\PaymentsController;
 use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\FactureController;
 use App\Http\Controllers\CobrosController;
+use App\Http\Controllers\ProductController;
 
 use App\Http\Controllers\BillsController;
 use App\Http\Controllers\BillsPeriodController;
@@ -39,10 +40,13 @@ Route::group(['middleware' => ['auth']], function()
     
     Route::resource('requisition', RequisitionController::class);
     Route::resource('work_orders', WorkOrderController::class);
+    Route::post('work_orders/partidas', [WorkOrderController::class, 'partidas'])->name('work_orders.partidas');
+    
     Route::resource('bills', BillsController::class);
     Route::resource('bills_period', BillsPeriodController::class);
     Route::resource('temp_items', TempItemController::class);
     Route::resource('items', ItemController::class);
+    Route::resource('products', ProductController::class);
     Route::resource('cuentas_cobrar', PaymentsController::class);
     Route::resource('factures', FactureController::class);
     Route::post('factures/update_2/{id}', [FactureController::class, 'update'])->name('factures.update2');

@@ -20,12 +20,11 @@ class WorkOrderController extends Controller
     }
     public function create(){
         $Customers=Customer::all();
-        $Sellers=Seller::all();
-        return view('work_orders.create',compact('Sellers','Customers'));
+        return view('work_orders.create',compact('Customers'));
 
     }
-    public function store(Request $request){
-
+    public function partidas(Request $request){
+        
         //faltan validaciones
         $Order=new WorkOrder();
         $Order->customer_id=$request->cliente;
@@ -33,6 +32,13 @@ class WorkOrderController extends Controller
         $Order->seller_id=1;
         $Order->process=$request->product_type;
         $Order->save();
+        return view('work_orders.partidas');
+        
+    }
+
+    public function store(Request $request){
+
+        
         return redirect()->route('work_orders.index');
     }
 }

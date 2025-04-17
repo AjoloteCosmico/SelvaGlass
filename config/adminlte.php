@@ -273,6 +273,12 @@ return [
                     'route'  => 'customers.index',
                     'can'  => 'VER CLIENTES',
                 ],
+                [
+                    'text' => 'PRODUCTOS',
+                    'icon' => 'fas fa-object-group fa-fw',
+                    'route'  => 'products.index',
+                    'can'  => 'VER PRODUCTOS',
+                ],
                 
             ],
             'can' => 'CATALOGOS',

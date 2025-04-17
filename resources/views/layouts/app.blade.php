@@ -49,8 +49,15 @@
         {{-- <script src="{{ mix('js/app.js') }}" defer></script> --}}
 
         @livewireStyles
-
+        <style>
+         .mytable{
+            th{
+              background-color:#1a521d !important;
+              }
+          }
+       </style>
         @stack('css')
+
         
     </head>
     <body class="font-sans antialiased">
