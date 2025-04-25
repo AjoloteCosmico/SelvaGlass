@@ -24,12 +24,15 @@ class WorkOrderController extends Controller
 
     }
     public function partidas(Request $request){
-        
         //faltan validaciones
+        // $rules=[];
+        // $messages=[];
+        // $request->validate([$rules,$messages]);
+
         $Order=new WorkOrder();
         $Order->customer_id=$request->cliente;
         $Order->date=now()->format('Y-m-d');
-        $Order->seller_id=1;
+        $Order->seller_id=Auth::user()->id;
         $Order->process=$request->product_type;
         $Order->save();
         return view('work_orders.partidas');
@@ -37,8 +40,19 @@ class WorkOrderController extends Controller
     }
 
     public function store(Request $request){
-
+ 
         
-        return redirect()->route('work_orders.index');
+        $WorwOrder= new WorkOrder();
+        $WorwOrder->date=now();
+
+        $WorwOrder->save();
+        
+        //Almacenar los dibujos
+
+        return redirect()->route('work_orders.capture_partidas',$WorwOrder->id);
+    }
+
+    public function show(){
+
     }
 }
