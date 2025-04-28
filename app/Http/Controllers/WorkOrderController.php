@@ -11,6 +11,7 @@ use App\Models\Item;
 use App\Models\WorkOrder;
 use DB;
 
+use Illuminate\Support\Facades\Hash;
 class WorkOrderController extends Controller
 {
     public function index(){
@@ -56,8 +57,9 @@ class WorkOrderController extends Controller
     public function show($id){
         $WorkOrder=WorkOrder::find($id);
         $Items=Item::where('work_order_id',$id)->get();
-        $Customer=Customer::find($WorkOrder->customer_id)->get();
-        return view('work_orders.show',compact('WorkOrder','Item','Customer'));
+        $Ticket=substr(Hash::make($WorkOrder->id.$WorkOrder->type),0,10);
+        $Customer=Customer::find($WorkOrder->customer_id);
+        return view('work_orders.show',compact('WorkOrder','Items','Customer','Ticket'));
     }
     public function destroy($id){
         
