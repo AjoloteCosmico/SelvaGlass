@@ -13,7 +13,7 @@
                 <i class="fas fa-plus-circle"></i>&nbsp; Agregar Partidas de Orden de Trabajo::
             </h5>
         </div >
-        <form action="{{ route('work_orders.store')}}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('work_orders.store_partidas')}}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="row rounded-b-lg rounded-t-none mb-4 shadow-xl bg-gray-300">
             <div class="row p-4">
@@ -50,14 +50,15 @@
                      <tbody>
                         @foreach ($Items as $row)
                         <tr>
-                            <td>{{$loop->index}}</td>
-                            <td></td>
-                            <td></td>
+                            <td>{{$loop->index +1}}</td>
+                            <td>{{$row->description}} </td>
+                            <td>{{$row->amount}} </td>
                             <td> </td>
                             <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>${{number_format($row->total_price/$row->amount,2)}} </td>
+                            
+                            <td>${{number_format($row->total_price,2)}} </td>
+                            <td>NA</td>
                             <td class="w-15">
                                 <div class="row">
                                     <div class="col-6 text-center w-10">
@@ -88,7 +89,7 @@
                     </tbody>
                 </table>
             </div>
-            <h1><b>TOTAL: $0.00
+            <h1><b>TOTAL: ${{number_format($Items->sum('total_price'),2)}}
             </b> </h1>
         </div>
                     </div>

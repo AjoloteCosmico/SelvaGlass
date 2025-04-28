@@ -39,16 +39,7 @@
                             </div>
                            
                             
-                            <div class="form-group">
-                                <x-jet-label value="* Medida de largo" />
-                                <x-jet-input type="number" name="large" class="w-full text-xs " value="{{old('large')}}"/>
-                                <x-jet-input-error for='large' />
-                            </div>
-                            <div class="form-group">
-                                <x-jet-label value="* Medida de ancho" />
-                                <x-jet-input type="number" name="deep" class="w-full text-xs " value="{{old('deep')}}"/>
-                                <x-jet-input-error for='deep' />
-                            </div>
+                           
                             <div class="form-group">
                                 <x-jet-label value="* Saldo disponible" />
                                 <x-jet-input type="number" name="available_balance" class="w-full text-xs " value="{{old('available_balance')}}"/>
@@ -64,10 +55,7 @@
                                 </select>
                                 <x-jet-input-error for='status' />
                             </div>
-                            <div class="form-group">
-                            <x-jet-label value="* Dibujos (ingrese maximo 10)" />
-                            <input type="file" id="files" name="files" multiple>
-                            </div>
+                           
                         </div>
                     </div>
                 </div>

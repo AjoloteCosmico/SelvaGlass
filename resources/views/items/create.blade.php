@@ -10,30 +10,45 @@
     <div class="container bg-gray-300 shadow-lg rounded-lg">
         <div class="row rounded-b-none rounded-t-lg shadow-xl bg-white">
             <h5 class="card-title p-2">
-                <i class="fas fa-plus-circle"></i>&nbsp; Agregar Moneda:
+                <i class="fas fa-plus-circle"></i>&nbsp; Agregar Partida:
             </h5>
         </div>
         <form action="{{ route('items.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
+        <x-jet-input type="hidden" name="work_order_id" value="{{$WorkOrder->id}}"/>
         <div class="row rounded-b-lg rounded-t-none mb-4 shadow-xl bg-gray-300">
             <div class="row p-4">
                 <div class="col-sm-12 col-xs-12 shadow rounded-xl p4">
                     <div class="card">
                         <div class="card-body">
-                            
-                            <div class="form-group">
-                                <x-jet-label value="* Cantidad" />
-                                <x-jet-input type="number"  step="1" name="amount" class="w-full text-xs " value="{{old('amount')}}"/>
-                                <x-jet-input-error for='amount' />
+                        <div class="form-group">
+                               <x-jet-label value="* Tipo de producto" />
+                                <select class="form-capture  w-full text-xs uppercase" id="type" name='type' onchange="cambio_tipo()"> 
+                                       <option value=""></option>
+                                       <option value='PRODUCTO' @if(old('type')=="PRODUCTO") selected @endif> PRODUCTO</option>
+                                       <option value='PROCESO' @if(old('type')=="PROCESO") selected @endif> PROCESO</option>
+                                       <option value='PAQUETE' @if(old('type')=="PAQUETE") selected @endif> PAQUETE</option>
+                                  
+                                </select>
+                              <x-jet-input-error for='type' />
                             </div>
                             <div class="form-group">
-                               <x-jet-label value="* Tipo de producto" />
-                                <select class="form-capture  w-full text-xs uppercase"  name='product_type'> 
+                               <x-jet-label value=" Producto" />
+                                <select class="form-capture  w-full text-xs uppercase"  name='product_id' id='product_id'> 
                                     @foreach($Products as $row)
                                        <option value='{{$row->id}}' @if(old('product_type')==$row->id) selected @endif> {{$row->description}} {{$row->grosor}}MM {{$row->ancho}}x{{$row->alto}}</option>
                                     @endforeach
                                 </select>
-                              <x-jet-input-error for='type' />
+                              <x-jet-input-error for='product_id' />
+                            </div>
+                            <div class="form-group">
+                               <x-jet-label value=" Proceso" />
+                                <select class="form-capture  w-full text-xs uppercase"  name='process' id='process'> 
+                                    @foreach($Products as $row)
+                                       <option value='proceso1' @if(old('process')=='proceso1') selected @endif> Proceso 1</option>
+                                    @endforeach
+                                </select>
+                              <x-jet-input-error for='process' />
                             </div>
                             <div class="form-group">      
                                 <x-jet-label value="* Tipo de Cristal" />
@@ -43,6 +58,31 @@
                                     </select>
                                     <x-jet-input-error for='crystal_type' />
                                 </div>
+                            <div class="form-group">
+                                <x-jet-label value="* Cantidad" />
+                                <x-jet-input type="number"  step="1" name="amount" class="w-full text-xs " value="{{old('amount')}}"/>
+                                <x-jet-input-error for='amount' />
+                            </div>
+                            <div class="form-group">
+                                <x-jet-label value="* Costo" />
+                                <x-jet-input type="number"  step="0.01" name="price" id="price" class="w-full text-xs " value="{{old('price')}}"/>
+                                <x-jet-input-error for='price' />
+                            </div>
+                            <div class="form-group">
+                                <x-jet-label value="* Medida de largo" />
+                                <x-jet-input type="number" name="large" class="w-full text-xs " value="{{old('large')}}"/>
+                                <x-jet-input-error for='large' />
+                            </div>
+                            <div class="form-group">
+                                <x-jet-label value="* Medida de ancho" />
+                                <x-jet-input type="number" name="deep" class="w-full text-xs " value="{{old('deep')}}"/>
+                                <x-jet-input-error for='deep' />
+                            </div>
+                            <div class="form-group">
+                            <x-jet-label value="* Dibujos (ingrese maximo 10)" />
+                            <input type="file" id="files" name="files" multiple>
+                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -65,5 +105,40 @@
 @stop
 
 @section('js')
+<script>
 
+function cambio_tipo(){
+    val=document.getElementById("type").value;
+    console.log(val);
+    if(val=='PROCESO'){
+        document.getElementById("product_id").disabled=true;
+        document.getElementById("product_id").style.backgroundColor='gray';
+        
+        document.getElementById("process").disabled=false;
+        document.getElementById("process").style.backgroundColor='white';
+        
+        document.getElementById("price").disabled=false;
+        document.getElementById("price").style.backgroundColor='white';
+    }
+    if(val=='PRODUCTO'){
+        document.getElementById("process").disabled=true;
+        document.getElementById("process").style.backgroundColor='gray';
+        
+        document.getElementById("price").disabled=true;
+        document.getElementById("price").style.backgroundColor='gray';
+        document.getElementById("product_id").disabled=false;
+        document.getElementById("product_id").style.backgroundColor='white';
+    }
+    if(val=='PAQUETE'){
+        document.getElementById("process").disabled=false;
+        document.getElementById("process").style.backgroundColor='white';
+        document.getElementById("product_id").disabled=false;
+        document.getElementById("product_id").style.backgroundColor='white';
+        
+        document.getElementById("price").disabled=false;
+        document.getElementById("price").style.backgroundColor='white';
+    }
+}
+
+</script>
 @stop

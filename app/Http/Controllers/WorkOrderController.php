@@ -42,8 +42,26 @@ class WorkOrderController extends Controller
     public function partidas($id){
 
         $WorkOrder=WorkOrder::find($id);
-        $Items=Item::where('order_id',$id);
+        $Items=Item::where('work_order_id',$id)->get();
 
         return view('work_orders.partidas',compact('WorkOrder','Items'));
+    }
+
+    public function store_partidas(Request $request){
+
+        //si hay otros campos guardar
+        return redirect()->route('work_orders.index');
+    }
+    
+    public function show($id){
+        $WorkOrder=WorkOrder::find($id);
+        $Items=Item::where('work_order_id',$id)->get();
+        $Customer=Customer::find($WorkOrder->customer_id)->get();
+        return view('work_orders.show',compact('WorkOrder','Item','Customer'));
+    }
+    public function destroy($id){
+        
+        return redirect()->route('work_orders.index');
+
     }
 }

@@ -42,7 +42,48 @@ class ItemController extends Controller
         ));
     }
 
-    
+    public function store(Request $request)
+    {
+         
+        $rules = [
+            'amount' => 'required',
+        
+       
+        ];
+
+        $messages = [
+            'amount.required' => 'La Cantidad es requerida',
+            
+        ];
+
+        $request->validate($rules, $messages);
+            $WorkOrder=WorkOrder::find($request->work_order_id);
+        
+        
+            $Items = new Item();
+            $Items->work_order_id = $request->work_order_id;
+            $Items->amount = $request->amount;
+            $Items->type = $request->type;
+            $Items->product_id = $request->product_id;
+            $Items->process = $request->process;
+            if($request->type=='PRODUCTO'){
+                $product=Product::find($request->product_id);
+                $Items->description=$product->description.' '.$product->grosor.'MM '.$product->ancho.'x'.$product->alto;
+                $Items->total_price = $product->price * $request->amount;
+            }
+            else{
+                $Items->total_price = $request->amount*$request->price;
+                $Items->descrption=$request->process;
+            }
+           
+            $Items->save();
+        
+            
+        
+        
+        
+            return redirect()->route('work_orders.partidas',$WorkOrder->id);
+    }
     public function edit_item($id)
     {
 
@@ -127,63 +168,7 @@ class ItemController extends Controller
         //
     }
     
-    public function store(Request $request)
-    {
-         
-        $rules = ['amount' => 'required',
-        'unit' => 'required',
-        'family' => 'required',
-        
-        
-        'sku' => 'required',
-        'description' => 'required',
-        'unit_price' => 'required',
-        ];
-
-        $messages = [
-            'amount.required' => 'La Cantidad es requerida',
-            'unit.required' => 'La unidad es requerida',
-            'family.required' => 'La familia es requerida',
-            
-            
-            'sku.required' => 'SKU requerido',
-            'description.required' => 'La descripción es requerida',
-            'unit_price.required' => 'El precio unitario es requerido',
-        ];
-
-        $request->validate($rules, $messages);
-
-        $Import = $request->amount * $request->unit_price;
-        
-        
-        
-            $Items = new Item();
-            $Items->internal_order_id = $request->internal_order_id;
-            $Items->item = $request->item;
-            $Items->amount = $request->amount;
-            $Items->unit = $request->unit;
-            if($request->family=='OTRO'){
-                $Items->family = $request->otro;
-            }
-            else{
-            $Items->family = $request->family;}
-            //$TempItems->subfamilia = $request->subfamily;
-            $Items->categoria = $request->category;
-            //$TempItems->products = $request->products;
-            //$TempItems->code = $request->code;
-           
-            $Items->sku = $request->sku;
-            
-            $Items->description = $request->description;
-            $Items->unit_price =(float) $request->unit_price;
-            $Items->import = $Import;
-            $Items->save();
-        
-            
-        
-        
-        return redirect('internal_orders/edit/'.$Items->internal_order_id);
-    }
+    
     public function update(Request $request, $id)
     {
         //

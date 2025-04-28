@@ -41,7 +41,13 @@
                             <td>{{$row->process}}</td>
                             <td> </td>
                             <td class="w-15">
+                                
                                 <div class="row">
+                                <div class="col-6 text-center w-10">
+                                        <a href="{{ route('work_orders.show', $row->id)}}">
+                                            <i class="fa-solid fa-eye btn btn-blue  "></i></span>
+                                        </a>
+                                    </div>
                                     <div class="col-6 text-center w-10">
                                         @can('EDITAR ORDEN')
                                         <a href="{{ route('work_orders.edit', $row->id)}}">
