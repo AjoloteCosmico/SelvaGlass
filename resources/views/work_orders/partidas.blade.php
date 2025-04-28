@@ -25,7 +25,7 @@
                         <div class="card-body">
                         <div class="col-sm-12 text-right">
                 @can('CREAR ORDEN')
-                <a href="{{ route('work_orders.create')}}" class="btn btn-green">
+                <a href="{{ route('items.creation',$WorkOrder->id)}}" class="btn btn-green">
                     <i class="fas fa-plus-circle"></i>&nbsp; Nueva
                 </a>
                 @endcan
@@ -36,28 +36,33 @@
             <table id="example"  class="table table-striped text-xs font-medium" >
                     <thead>
                         <tr>
-                            <th>Peoducto</th>
+                            <th>Pos</th>
+                            <th>Descripcion</th>
                             <th>Cantidad</th>
-                            
+                            <th>Ancho</th>
+                            <th>Largo</th>
                             <th>Precio Unitario</th>
                             <th>Precio total</th>
+                            <th>dibujo</th>
                             <th style="width : 10%;">&nbsp;&nbsp; </th>
                         </tr>
                     </thead>
-                    {{--  <tbody>
-                        @foreach ($Orders as $row)
+                     <tbody>
+                        @foreach ($Items as $row)
                         <tr>
-                            <td>{{$row->id}}</td>
-                            <td>{{$row->customer}}</td>
-                            
-                            <td>VENDEDOR PRUEBA</td>
-                            <td>{{$row->process}}</td>
+                            <td>{{$loop->index}}</td>
+                            <td></td>
+                            <td></td>
                             <td> </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                             <td class="w-15">
                                 <div class="row">
                                     <div class="col-6 text-center w-10">
                                         @can('EDITAR ORDEN')
-                                        <a href="{{ route('work_orders.edit', $row->id)}}">
+                                        <a href="{{ route('items.edit', $row->id)}}">
                                         <button type="submit" class="btn btn-blue ">
                                                 <i class="fas fa-edit items-center fa-xl"></i>
                                             </button>
@@ -67,7 +72,7 @@
                                     &nbsp;&nbsp;
                                     <div class="col-6 text-center w-10">
                                         @can('BORRAR ORDEN')
-                                        <form class="DeleteReg" action="{{ route('work_orders.destroy', $row->id) }}" method="POST">
+                                        <form class="DeleteReg" action="{{ route('items.destroy', $row->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-red">
@@ -80,7 +85,7 @@
                             </td>
                         </tr>
                         @endforeach
-                    </tbody>--}}
+                    </tbody>
                 </table>
             </div>
             <h1><b>TOTAL: $0.00

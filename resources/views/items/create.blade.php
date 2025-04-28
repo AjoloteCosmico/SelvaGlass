@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'MONEDAS')
+@section('title', 'PARTIDA')
 
 @section('content_header')
-    <h1 class="font-bold"><i class="fas fa-money-bill-1"></i>&nbsp; Moneda</h1>
+    <h1 class="font-bold"><i class="fas fa-money-bill-1"></i>&nbsp; PARTIDA</h1>
 @stop
 
 @section('content')
@@ -13,33 +13,36 @@
                 <i class="fas fa-plus-circle"></i>&nbsp; Agregar Moneda:
             </h5>
         </div>
-        <form action="{{ route('coins.store')}}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('items.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="row rounded-b-lg rounded-t-none mb-4 shadow-xl bg-gray-300">
             <div class="row p-4">
                 <div class="col-sm-12 col-xs-12 shadow rounded-xl p4">
                     <div class="card">
                         <div class="card-body">
+                            
                             <div class="form-group">
-                                <x-jet-label value="* Moneda" />
-                                <x-jet-input type="text" name="coin" class="w-full text-xs " value="{{old('coin')}}"/>
-                                <x-jet-input-error for='coin' />
+                                <x-jet-label value="* Cantidad" />
+                                <x-jet-input type="number"  step="1" name="amount" class="w-full text-xs " value="{{old('amount')}}"/>
+                                <x-jet-input-error for='amount' />
                             </div>
                             <div class="form-group">
-                                <x-jet-label value="Símbolo" />
-                                <x-jet-input type="text" name="symbol" class="w-full text-xs " value="{{old('symbol')}}"/>
-                                <x-jet-input-error for='symbol' />
+                               <x-jet-label value="* Tipo de producto" />
+                                <select class="form-capture  w-full text-xs uppercase"  name='product_type'> 
+                                    @foreach($Products as $row)
+                                       <option value='{{$row->id}}' @if(old('product_type')==$row->id) selected @endif> {{$row->description}} {{$row->grosor}}MM {{$row->ancho}}x{{$row->alto}}</option>
+                                    @endforeach
+                                </select>
+                              <x-jet-input-error for='type' />
                             </div>
-                            <div class="form-group">
-                                <x-jet-label value="Código" />
-                                <x-jet-input type="text" name="code" class="w-full text-xs " value="{{old('code')}}"/>
-                                <x-jet-input-error for='code' />
-                            </div>
-                            <div class="form-group">
-                                <x-jet-label value="* Tipo de Cambio" />
-                                <x-jet-input type="number" step="0.01" name="exchange_rate" class="w-full text-xs " value="{{old('exchange_rate')}}"/>
-                                <x-jet-input-error for='exchange_rate' />
-                            </div>
+                            <div class="form-group">      
+                                <x-jet-label value="* Tipo de Cristal" />
+                                    <select class="form-capture  w-full text-xs uppercase"  name='crystal_type'> 
+                                        <option value='TEMPLADO' @if(old('crystal_type')=='TEMPLADO') selected @endif> TEMPLADO</option>
+                                        <option value='SIN TEMPLAR' @if(old('crystal_type')=='SIN TEMPLAR') selected @endif> SIN TEMPLAR</option>
+                                    </select>
+                                    <x-jet-input-error for='crystal_type' />
+                                </div>
                         </div>
                     </div>
                 </div>

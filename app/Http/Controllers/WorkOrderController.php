@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Models\Seller;
 use App\Models\Customer;
+
+use App\Models\Item;
 use App\Models\WorkOrder;
 use DB;
 
@@ -23,22 +25,25 @@ class WorkOrderController extends Controller
         return view('work_orders.create',compact('Customers'));
 
     }
-    public function partidas(Request $request){
+    public function store(Request $request){
         
         //faltan validaciones
-        $Order=new WorkOrder();
-        $Order->customer_id=$request->cliente;
-        $Order->date=now()->format('Y-m-d');
-        $Order->seller_id=1;
-        $Order->process=$request->product_type;
-        $Order->save();
-        return view('work_orders.partidas');
+        $WorkOrder=new WorkOrder();
+        $WorkOrder->customer_id=$request->cliente;
+        $WorkOrder->date=now()->format('Y-m-d');
+        $WorkOrder->seller_id=1;
+        $WorkOrder->process=$request->product_type;
+        $WorkOrder->save();
+        return redirect()->route('work_orders.partidas',$WorkOrder->id);
+
         
     }
 
-    public function store(Request $request){
+    public function partidas($id){
 
-        
-        return redirect()->route('work_orders.index');
+        $WorkOrder=WorkOrder::find($id);
+        $Items=Item::where('order_id',$id);
+
+        return view('work_orders.partidas',compact('WorkOrder','Items'));
     }
 }

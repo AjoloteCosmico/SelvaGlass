@@ -13,7 +13,7 @@
                 <i class="fas fa-plus-circle"></i>&nbsp; Crear Nueva Orden de Trabajo::
             </h5>
         </div >
-        <form action="{{ route('work_orders.partidas')}}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('work_orders.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="row rounded-b-lg rounded-t-none mb-4 shadow-xl bg-gray-300">
             <div class="row p-4">
@@ -38,23 +38,7 @@
                                 <x-jet-input-error for='descripcion' />
                             </div>
                            
-                            <div class="form-group">
-                               <x-jet-label value="* Tipo de producto" />
-                                <select class="form-capture  w-full text-xs uppercase"  name='product_type'> 
-                                    <option value='HOJA' @if(old('product_type"')=='HOJA') selected @endif> HOJA</option>
-                                    <option value='CORTE' @if(old('product_type"')=='CORTE') selected @endif> CORTE</option>
-                                    <option value='MAQUILA' @if(old('product_type"')=='MAQUILA') selected @endif> MAQUILA</option>
-                                </select>
-                              <x-jet-input-error for='type' />
-                            </div>
-                            <div class="form-group">      
-                                <x-jet-label value="* Tipo de Cristal" />
-                                    <select class="form-capture  w-full text-xs uppercase"  name='crystal_type'> 
-                                        <option value='TEMPLADO' @if(old('crystal_type')=='TEMPLADO') selected @endif> TEMPLADO</option>
-                                        <option value='SIN TEMPLAR' @if(old('crystal_type')=='SIN TEMPLAR') selected @endif> SIN TEMPLAR</option>
-                                    </select>
-                                    <x-jet-input-error for='crystal_type' />
-                                </div>
+                            
                             <div class="form-group">
                                 <x-jet-label value="* Medida de largo" />
                                 <x-jet-input type="number" name="large" class="w-full text-xs " value="{{old('large')}}"/>

@@ -9,6 +9,9 @@ use App\Models\Family;
 use App\Models\Requisition;
 use App\Models\Unit;
 
+use App\Models\Product;
+use App\Models\WorkOrder;
+
 use Illuminate\Http\Request;
 
 class ItemController extends Controller
@@ -20,8 +23,9 @@ class ItemController extends Controller
 
     public function create($id)
     {
-        $InternalOrders = $id;
-        $Items = Item::where('internal_order_id', $id)->OrderBy('id', 'DESC')->first();
+          
+        $WorkOrder=WorkOrder::find($id);
+        $Items = Item::where('work_order_id', $id)->OrderBy('id', 'DESC')->first();
 
         if($Items){
             $Item = $Items->item + 1;
@@ -29,14 +33,12 @@ class ItemController extends Controller
             $Item = 1;
         }
 
-        $Units = Unit::all();
-        $Families = Family::all();
+        $Products = Product::all();
 
-        return view('admin.items.add_item', compact(
-            'InternalOrders',
+        return view('items.create', compact(
+            'WorkOrder',
             'Item',
-            'Units',
-            'Families',
+            'Products',
         ));
     }
 
