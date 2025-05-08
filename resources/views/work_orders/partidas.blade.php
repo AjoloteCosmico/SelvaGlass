@@ -17,7 +17,7 @@
         @csrf
         <div class="row rounded-b-lg rounded-t-none mb-4 shadow-xl bg-gray-300">
             <div class="row p-4">
-                <div class="col-sm-6 col-xs-12 shadow rounded-xl p4">
+                <div class=" col-xs-12 shadow rounded-xl p4">
                     <div class="card">
                         <div class="card-header">
                             <h1 class="h5 text-center fw">Partidas</h1>
@@ -53,8 +53,9 @@
                             <td>{{$loop->index +1}}</td>
                             <td>{{$row->description}} </td>
                             <td>{{$row->amount}} </td>
-                            <td> </td>
-                            <td></td>
+                            
+                            <td>{{$row->ancho}}  </td>
+                            <td>{{$row->largo}} </td>
                             <td>${{number_format($row->total_price/$row->amount,2)}} </td>
                             
                             <td>${{number_format($row->total_price,2)}} </td>

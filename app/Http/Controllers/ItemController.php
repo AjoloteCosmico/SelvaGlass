@@ -70,10 +70,13 @@ class ItemController extends Controller
                 $product=Product::find($request->product_id);
                 $Items->description=$product->description.' '.$product->grosor.'MM '.$product->ancho.'x'.$product->alto;
                 $Items->total_price = $product->price * $request->amount;
+                $Items->largo=$request->largo;
+                $Items->ancho=$request->ancho;
             }
             else{
                 $Items->total_price = $request->amount*$request->price;
-                $Items->descrption=$request->process;
+                $Items->description=$request->process; 
+                $Items->product_id =0;
             }
            
             $Items->save();

@@ -44,9 +44,11 @@
                             <div class="form-group">
                                <x-jet-label value=" Proceso" />
                                 <select class="form-capture  w-full text-xs uppercase"  name='process' id='process'> 
-                                    @foreach($Products as $row)
-                                       <option value='proceso1' @if(old('process')=='proceso1') selected @endif> Proceso 1</option>
-                                    @endforeach
+                                   
+                                       <option value='LAMINADO' @if(old('process')=='LAMINADO') selected @endif> LAMINADO</option>
+                                       <option value='BISEL' @if(old('process')=='BISEL') selected @endif> BISEL</option>
+                                       <option value='SERIGRAFIA' @if(old('process')=='SERIGRAFIA') selected @endif> SERIGRAFIA</option>
+                                    
                                 </select>
                               <x-jet-input-error for='process' />
                             </div>
@@ -70,13 +72,13 @@
                             </div>
                             <div class="form-group">
                                 <x-jet-label value="* Medida de largo" />
-                                <x-jet-input type="number" name="large" class="w-full text-xs " value="{{old('large')}}"/>
-                                <x-jet-input-error for='large' />
+                                <x-jet-input type="number" name="largo" id="largo" class="w-full text-xs " value="{{old('largo')}}"/>
+                                <x-jet-input-error for='largo' />
                             </div>
                             <div class="form-group">
                                 <x-jet-label value="* Medida de ancho" />
-                                <x-jet-input type="number" name="deep" class="w-full text-xs " value="{{old('deep')}}"/>
-                                <x-jet-input-error for='deep' />
+                                <x-jet-input type="number" name="ancho" id="ancho" class="w-full text-xs " value="{{old('ancho')}}"/>
+                                <x-jet-input-error for='ancho' />
                             </div>
                             <div class="form-group">
                             <x-jet-label value="* Dibujos (ingrese maximo 10)" />
@@ -119,6 +121,10 @@ function cambio_tipo(){
         
         document.getElementById("price").disabled=false;
         document.getElementById("price").style.backgroundColor='white';
+        document.getElementById("ancho").disabled=true;
+        document.getElementById("ancho").style.backgroundColor='gray';
+        document.getElementById("largo").disabled=true;
+        document.getElementById("largo").style.backgroundColor='gray';
     }
     if(val=='PRODUCTO'){
         document.getElementById("process").disabled=true;
@@ -128,6 +134,11 @@ function cambio_tipo(){
         document.getElementById("price").style.backgroundColor='gray';
         document.getElementById("product_id").disabled=false;
         document.getElementById("product_id").style.backgroundColor='white';
+
+        document.getElementById("ancho").disabled=false;
+        document.getElementById("ancho").style.backgroundColor='whitr';
+        document.getElementById("largo").disabled=false;
+        document.getElementById("largo").style.backgroundColor='white';
     }
     if(val=='PAQUETE'){
         document.getElementById("process").disabled=false;
@@ -137,6 +148,11 @@ function cambio_tipo(){
         
         document.getElementById("price").disabled=false;
         document.getElementById("price").style.backgroundColor='white';
+
+        document.getElementById("ancho").disabled=true;
+        document.getElementById("ancho").style.backgroundColor='gray';
+        document.getElementById("largo").disabled=true;
+        document.getElementById("largo").style.backgroundColor='gray';
     }
 }
 

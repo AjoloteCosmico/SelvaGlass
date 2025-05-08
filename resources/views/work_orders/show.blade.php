@@ -81,8 +81,8 @@
                             <td>{{$loop->index +1}}</td>
                             <td>{{$row->description}} </td>
                             <td>{{$row->amount}} </td>
-                            <td> </td>
-                            <td></td>
+                            <td>{{$row->ancho}}  </td>
+                            <td>{{$row->largo}} </td>
                             <td>${{number_format($row->total_price/$row->amount,2)}} </td>
                             
                             <td>${{number_format($row->total_price,2)}} </td>

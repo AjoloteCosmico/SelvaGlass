@@ -50,7 +50,7 @@
                                     </div>
                                     <div class="col-6 text-center w-10">
                                         @can('EDITAR ORDEN')
-                                        <a href="{{ route('work_orders.edit', $row->id)}}">
+                                        <a href="{{ route('work_orders.partidas', $row->id)}}">
                                         <button type="submit" class="btn btn-blue ">
                                                 <i class="fas fa-edit items-center fa-xl"></i>
                                             </button>

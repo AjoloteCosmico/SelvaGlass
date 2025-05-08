@@ -61,29 +61,31 @@ class WorkOrderController extends Controller
         $Ticket=substr(Hash::make($WorkOrder->id.$WorkOrder->type),20,30);
         $Customer=Customer::find($WorkOrder->customer_id);
         return view('work_orders.show',compact('WorkOrder','Items','Customer','Ticket'));
-    }
+      }
     public function ticket($id){
         $WorkOrder=WorkOrder::find($id);
         $Items=Item::where('work_order_id',$id)->get();
     
         // Combinar ID y tipo para formar el texto del código de barras
-        $barcodeText = $WorkOrder->type . '-' . $WorkOrder->id; // Ejemplo: "PED-ABC123"
+        $barcodeText = str_pad( $WorkOrder->id, 4, "0", STR_PAD_LEFT ); // Ejemplo: "PED-ABC123"
         // Generar código de barras CODE 128 (formato común para letras y números)
-        $barcodeHTML = DNS1D::getBarcodeHTML($barcodeText, 'C128');
+        $barcodeHTML = DNS1D::getBarcodeHTML($barcodeText, 'C128',4,44);
         // Opcional: Generar como SVG o PNG
         $barcodeSVG = DNS1D::getBarcodeSVG($barcodeText, 'C128');
         $barcodePNG = DNS1D::getBarcodePNG($barcodeText, 'C128');
         // Crear PDF a partir de una vista Blade
-        $pdf = Pdf::loadView('orders.barcode_pdf', [
+        $pdf = Pdf::loadView('work_orders.ticket', [
             'barcodeHTML' => $barcodeHTML,
-            'barcodeText' => $barcodeText
+            'barcodeText' => $barcodeText,
+            'WorkOrder' => $WorkOrder,
+            'Items' => $Items,
         ]);
-
+        
         // Opciones del PDF (opcional)
         $pdf->setPaper('A4', 'portrait'); // Tamaño y orientación
 
         // Descargar el PDF directamente
-        return $pdf->download('codigo_barras_' . $orderId . '.pdf');
+        return $pdf->download('codigo_barras_' . $WorkOrder->id . '.pdf');
 
         
         
