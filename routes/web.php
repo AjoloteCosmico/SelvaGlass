@@ -42,6 +42,7 @@ Route::group(['middleware' => ['auth']], function()
     Route::resource('work_orders', WorkOrderController::class);
     Route::get('work_orders/partidas/{id}', [WorkOrderController::class, 'partidas'])->name('work_orders.partidas');
     Route::post('work_orders/store_partidas/', [WorkOrderController::class, 'store_partidas'])->name('work_orders.store_partidas');
+    Route::get('work_orders/ticket/{id}', [WorkOrderController::class, 'ticket'])->name('work_orders.ticket');
     
     Route::resource('bills', BillsController::class);
     Route::resource('bills_period', BillsPeriodController::class);
