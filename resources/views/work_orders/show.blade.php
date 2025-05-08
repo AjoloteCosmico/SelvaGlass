@@ -3,7 +3,7 @@
 @section('title', 'ORDEN DE TRABAJO')
 
 @section('content_header')
-    <h1 class="font-bold"><i class="fas fa-users-cog"></i>&nbsp; Orden de Trabajo 0{{$WorkOrder->id}}</h1>
+    <h1 class="font-bold"><i class="fas fa-users-cog"></i>&nbsp; Orden de Trabajo {{str_pad( $WorkOrder->id, 4, "0", STR_PAD_LEFT )}}</h1>
 @stop
 
 @section('content')
@@ -19,7 +19,7 @@
                         <div class="row"> <h4>Selva Glass</h4></div>
                     </div>
                     
-                    <div class="col" style="padding: 18.vw;"><center></center> <h1 class="h1 text-center fw">PEDIDO</h1> <center></div>
+                    <div class="col" style="padding: 18.vw;"><center></center> <h1 class="h1 text-center fw">Orden de Trabajo</h1> <center></div>
                     
                     <div class="col"> 
                         <table>

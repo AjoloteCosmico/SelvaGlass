@@ -82,7 +82,7 @@ class WorkOrderController extends Controller
         ]);
         
         // Opciones del PDF (opcional)
-        $pdf->setPaper('A4', 'portrait'); // Tamaño y orientación
+        $pdf->setPaper([0, 0, 396, 306], 'landscape'); // Tamaño y orientación tipo etiqueta
 
         // Descargar el PDF directamente
         return $pdf->download('codigo_barras_' . $WorkOrder->id . '.pdf');

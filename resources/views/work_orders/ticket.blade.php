@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>Código de Barras - Pedido {{ $barcodeText }}</title>
+    <title>Código de Barras - Orden de trabajo{{ $barcodeText }}</title>
     <style>
         body { font-family: Arial, sans-serif; }
         .barcode-container { text-align: center; margin-top: 50px; }
@@ -13,9 +13,9 @@
     <div class="barcode-container">
     <table>
         <tr>
-            <td> <img src="{{asset('img/logo/logo.svg')}}" alt="SELVA GLASS"  style="align-self: left; width: 35%"></td>
+            <td> <img src="{{asset('img/logo/logo.svg')}}" alt="SELVA GLASS"  style="align-self: left; width: 70%"></td>
             <td>SELVA GLASS</td>
-            <td> Pedido {{str_pad( $WorkOrder->id, 4, "0", STR_PAD_LEFT )}}</td>
+            <td> Orden de trabajo {{str_pad( $WorkOrder->id, 4, "0", STR_PAD_LEFT )}}</td>
         </tr>
     </table>
     
