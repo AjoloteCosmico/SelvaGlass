@@ -20,8 +20,8 @@
             <div class="col-sm-12 table-responsive">
                 
             <table id="example"  class="table table-striped text-xs font-medium" >
-                    <thead>
-                        <tr>
+                    <thead >
+                        <tr >
                             <th>Id</th>
                             <th>Vendedor</th>
                             
@@ -81,7 +81,13 @@
 @stop
 
 @section('css')
-    
+ <style>
+    table th {
+    background-color: #1a521d !important;
+    color: white !important; /* Para contraste */
+  }
+ </style>
+
 @stop
 
 @section('js')

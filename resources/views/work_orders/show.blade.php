@@ -19,7 +19,7 @@
                         <div class="row"> <h4>Selva Glass</h4></div>
                     </div>
                     
-                    <div class="col" style="padding: 18.vw;"><center></center> <h1>PEDIDO</h1> <center></div>
+                    <div class="col" style="padding: 18.vw;"><center></center> <h1 class="h1 text-center fw">PEDIDO</h1> <center></div>
                     
                     <div class="col"> 
                         <table>
@@ -42,6 +42,7 @@
                         </table>
                     </div>
                 </div>
+                <br>
                 <div class="row">
                 <table>
                             <tr>
@@ -51,7 +52,7 @@
                         </table>
                 </div>
                         <div class="card-header">
-                            <h1 class="h5 text-center fw">Partidas</h1>
+                            <h1 class="h2 text-center fw">Partidas</h1>
                         </div>
                       
                         <div class="col-sm-12 text-right">
@@ -119,6 +120,12 @@
             <h1><b>TOTAL: ${{number_format($Items->sum('total_price'),2)}}
             </b> </h1>
         </div>
+        <div class="col-sm-12 text-right">
+                
+                <a href="{{ route('work_orders.ticket',$WorkOrder->id)}}" class="btn btn-blue">
+                    <i class="fas fa-barcode"></i>&nbsp; TICKET
+                </a>
+                </div>
         </div>
             </div>
             
@@ -126,7 +133,21 @@
 @stop
 
 @section('css')
-    
+    <style>
+        table th {
+    background-color: #1a521d !important;
+    color: white !important; /* Para contraste */
+    border: 2px solid white !important;
+    border-radius: 5px !important;
+    padding: 0.8vw;
+    font-weight: bold;
+  }
+  table td{
+    border: 2px solid gray !important;
+    border-radius: 5px !important;
+    padding: 0.8vw;
+  }
+    </style>
 @stop
 
 @section('js')
