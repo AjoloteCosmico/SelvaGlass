@@ -33,7 +33,7 @@
                               <x-jet-input-error for='type' />
                             </div>
                             <div class="form-group">
-                               <x-jet-label value=" Producto" />
+                               <x-jet-label value=" HOJA" />
                                 <select class="form-capture  w-full text-xs uppercase"  name='product_id' id='product_id'> 
                                     @foreach($Products as $row)
                                        <option value='{{$row->id}}' @if(old('product_type')==$row->id) selected @endif> {{$row->description}} {{$row->grosor}}MM {{$row->ancho}}x{{$row->alto}}</option>

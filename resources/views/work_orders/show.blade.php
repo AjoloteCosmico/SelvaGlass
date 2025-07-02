@@ -8,8 +8,6 @@
 
 @section('content')
     <div class="container shadow-lg rounded-lg">
-        
-      
         <div class="row rounded-b-lg rounded-t-none mb-4 shadow-xl ">
             <div class="col">
                 <div class="row"> 
@@ -18,10 +16,9 @@
                         
                         <div class="row"> <h4>Selva Glass</h4></div>
                     </div>
-                    
                     <div class="col" style="padding: 18.vw;"><center></center> <h1 class="h1 text-center fw">Orden de Trabajo</h1> <center></div>
-                    
                     <div class="col"> 
+                        
                         <table>
                             <tr>
                                 <th>Pedido</th>

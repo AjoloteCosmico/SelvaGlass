@@ -37,7 +37,7 @@
                             
                             <div class="form-group">
                                 <x-jet-label value="* RFC" />
-                                <x-jet-input type="text" name="customer_rfc" class="w-full text-xs " value="{{session('rfc')}}" disabled/>
+                                <x-jet-input type="text" name="customer_rfc" class="w-full text-xs " value="" />
                                 <x-jet-input-error for='customer_rfc' />
                             </div>
                             <div class="form-group">
@@ -195,7 +195,7 @@
 @stop
 
 @section('js')
-<script type="text/javascript" src="{{ asset('vendor/mystylesjs/js/rfc_disponible.js') }}"></script>
+<!-- <script type="text/javascript" src="{{ asset('vendor/mystylesjs/js/rfc_disponible.js') }}"></script> -->
 
 <script>
     $(document).ready(function () {     
