@@ -28,7 +28,6 @@
                                        <option value='PRODUCTO' @if(old('type')=="PRODUCTO") selected @endif> PRODUCTO</option>
                                        <option value='PROCESO' @if(old('type')=="PROCESO") selected @endif> PROCESO</option>
                                        <option value='PAQUETE' @if(old('type')=="PAQUETE") selected @endif> PAQUETE</option>
-                                  
                                 </select>
                               <x-jet-input-error for='type' />
                             </div>

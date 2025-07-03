@@ -117,12 +117,18 @@
             <h1><b>TOTAL: ${{number_format($Items->sum('total_price'),2)}}
             </b> </h1>
         </div>
-        <div class="col-sm-12 text-right">
+        <div class="row">
+            <div class="col-sm-12 text-right">
                 
                 <a href="{{ route('work_orders.ticket',$WorkOrder->id)}}" class="btn btn-blue">
                     <i class="fas fa-barcode"></i>&nbsp; TICKET
                 </a>
                 </div>
+            <div class="col-sm-12 text-right">
+                <button type = "button" class="btn btn-red " style="background-color: rgb(220 ,38 ,38);color: white;" mb-2"  onclick="window.print();"> <i class="fas fa-file-pdf fa-xl"> &nbsp; PDF </i> </button>
+                
+                </div>
+        </div>
         </div>
             </div>
             
