@@ -3,13 +3,11 @@
 @section('title', 'ORDEN DE TRABAJO')
 
 @section('content_header')
-    <h1 class="font-bold"><i class="fas fa-users-cog"></i>&nbsp; Orden de Trabajo 0{{$WorkOrder->id}}</h1>
+    <h1 class="font-bold"><i class="fas fa-users-cog"></i>&nbsp; Orden de Trabajo {{str_pad( $WorkOrder->id, 4, "0", STR_PAD_LEFT )}}</h1>
 @stop
 
 @section('content')
     <div class="container shadow-lg rounded-lg">
-        
-      
         <div class="row rounded-b-lg rounded-t-none mb-4 shadow-xl ">
             <div class="col">
                 <div class="row"> 
@@ -18,10 +16,9 @@
                         
                         <div class="row"> <h4>Selva Glass</h4></div>
                     </div>
-                    
-                    <div class="col" style="padding: 18.vw;"><center></center> <h1>PEDIDO</h1> <center></div>
-                    
+                    <div class="col" style="padding: 18.vw;"><center></center> <h1 class="h1 text-center fw">Orden de Trabajo</h1> <center></div>
                     <div class="col"> 
+                        
                         <table>
                             <tr>
                                 <th>Pedido</th>
@@ -42,6 +39,7 @@
                         </table>
                     </div>
                 </div>
+                <br>
                 <div class="row">
                 <table>
                             <tr>
@@ -51,7 +49,7 @@
                         </table>
                 </div>
                         <div class="card-header">
-                            <h1 class="h5 text-center fw">Partidas</h1>
+                            <h1 class="h2 text-center fw">Partidas</h1>
                         </div>
                       
                         <div class="col-sm-12 text-right">
@@ -80,8 +78,8 @@
                             <td>{{$loop->index +1}}</td>
                             <td>{{$row->description}} </td>
                             <td>{{$row->amount}} </td>
-                            <td> </td>
-                            <td></td>
+                            <td>{{$row->ancho}}  </td>
+                            <td>{{$row->largo}} </td>
                             <td>${{number_format($row->total_price/$row->amount,2)}} </td>
                             
                             <td>${{number_format($row->total_price,2)}} </td>
@@ -119,6 +117,18 @@
             <h1><b>TOTAL: ${{number_format($Items->sum('total_price'),2)}}
             </b> </h1>
         </div>
+        <div class="row">
+            <div class="col-sm-12 text-right">
+                
+                <a href="{{ route('work_orders.ticket',$WorkOrder->id)}}" class="btn btn-blue">
+                    <i class="fas fa-barcode"></i>&nbsp; TICKET
+                </a>
+                </div>
+            <div class="col-sm-12 text-right">
+                <button type = "button" class="btn btn-red " style="background-color: rgb(220 ,38 ,38);color: white;" mb-2"  onclick="window.print();"> <i class="fas fa-file-pdf fa-xl"> &nbsp; PDF </i> </button>
+                
+                </div>
+        </div>
         </div>
             </div>
             
@@ -126,7 +136,21 @@
 @stop
 
 @section('css')
-    
+    <style>
+        table th {
+    background-color: #1a521d !important;
+    color: white !important; /* Para contraste */
+    border: 2px solid white !important;
+    border-radius: 5px !important;
+    padding: 0.8vw;
+    font-weight: bold;
+  }
+  table td{
+    border: 2px solid gray !important;
+    border-radius: 5px !important;
+    padding: 0.8vw;
+  }
+    </style>
 @stop
 
 @section('js')

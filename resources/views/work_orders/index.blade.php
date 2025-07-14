@@ -20,8 +20,8 @@
             <div class="col-sm-12 table-responsive">
                 
             <table id="example"  class="table table-striped text-xs font-medium" >
-                    <thead>
-                        <tr>
+                    <thead >
+                        <tr >
                             <th>Id</th>
                             <th>Vendedor</th>
                             
@@ -50,7 +50,7 @@
                                     </div>
                                     <div class="col-6 text-center w-10">
                                         @can('EDITAR ORDEN')
-                                        <a href="{{ route('work_orders.edit', $row->id)}}">
+                                        <a href="{{ route('work_orders.partidas', $row->id)}}">
                                         <button type="submit" class="btn btn-blue ">
                                                 <i class="fas fa-edit items-center fa-xl"></i>
                                             </button>
@@ -81,7 +81,13 @@
 @stop
 
 @section('css')
-    
+ <style>
+    table th {
+    background-color: #1a521d !important;
+    color: white !important; /* Para contraste */
+  }
+ </style>
+
 @stop
 
 @section('js')
