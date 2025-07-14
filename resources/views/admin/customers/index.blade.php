@@ -39,8 +39,8 @@
                         <tr>
                             <td>{{$row->clave}}</td>
                             <td>{{$row->customer}}</td>
-                            <td>{{$row->alias}}</td>
-                            <!-- <td>{{$row->customer_state}}</td> -->
+                            <!-- <td>{{$row->alias}}</td> -->
+                            <td>{{$row->customer_state}}</td>
                             <td>{{$row->customer_city}}</td>
                             <!-- <td>{{$row->customer_email}}</td> -->
                             <td>{{$row->customer_telephone}}</td>
