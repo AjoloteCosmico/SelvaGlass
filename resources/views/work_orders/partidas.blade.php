@@ -24,7 +24,7 @@
                         </div>
                         <div class="card-body">
                         <div class="col-sm-12 text-right">
-                @can('CREAR ORDEN')
+                @can('CREAR ORDEN DE TRABAJO')
                 <a href="{{ route('items.creation',$WorkOrder->id)}}" class="btn btn-green">
                     <i class="fas fa-plus-circle"></i>&nbsp; Nueva
                 </a>
