@@ -63,17 +63,17 @@
                             <td class="w-15">
                                 <div class="row">
                                     <div class="col-6 text-center w-10">
-                                        @can('EDITAR ORDEN')
+                                       
                                         <a href="{{ route('items.edit', $row->id)}}">
                                         <button type="submit" class="btn btn-blue ">
                                                 <i class="fas fa-edit items-center fa-xl"></i>
                                             </button>
                                         </a>
-                                        @endcan
+                                        
                                     </div>
                                     &nbsp;&nbsp;
                                     <div class="col-6 text-center w-10">
-                                        @can('BORRAR ORDEN')
+                                        
                                         <form class="DeleteReg" action="{{ route('items.destroy', $row->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
@@ -81,7 +81,7 @@
                                                 <i class="fas fa-trash items-center fa-xl"></i>
                                             </button>
                                         </form>
-                                        @endcan
+                                        
                                     </div>
                                 </div>
                             </td>
