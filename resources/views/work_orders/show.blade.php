@@ -119,14 +119,16 @@
         </div>
         <div class="row">
             <div class="col-sm-12 text-right">
-                
+                @can('GENERAR CODIGO DE BARRAS')
                 <a href="{{ route('work_orders.ticket',$WorkOrder->id)}}" class="btn btn-blue">
                     <i class="fas fa-barcode"></i>&nbsp; TICKET
                 </a>
+                @endcan
                 </div>
             <div class="col-sm-12 text-right">
+                @can('IMPRIMIR ORDEN DE TRABAJO')
                 <button type = "button" class="btn btn-red " style="background-color: rgb(220 ,38 ,38);color: white;" mb-2"  onclick="window.print();"> <i class="fas fa-file-pdf fa-xl"> &nbsp; PDF </i> </button>
-                
+                @endcan
                 </div>
         </div>
         </div>

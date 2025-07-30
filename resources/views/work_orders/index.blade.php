@@ -10,7 +10,7 @@
     <div class="container-flex m-1 bg-gray-300 shadow-lg rounded-lg">
         <div class="row p-3 m-2 rounded-lg shadow-xl bg-white">
             <div class="col-sm-12 text-right">
-                @can('CREAR ORDEN')
+                @can('CREAR ORDEN DE TRABAJO')
                 <a href="{{ route('work_orders.create')}}" class="btn btn-green">
                     <i class="fas fa-plus-circle"></i>&nbsp; Nueva
                 </a>
@@ -49,7 +49,7 @@
                                         </a>
                                     </div>
                                     <div class="col-6 text-center w-10">
-                                        @can('EDITAR ORDEN')
+                                        @can('EDITAR ORDEN DE TRABAJO')
                                         <a href="{{ route('work_orders.partidas', $row->id)}}">
                                         <button type="submit" class="btn btn-blue ">
                                                 <i class="fas fa-edit items-center fa-xl"></i>
@@ -59,7 +59,7 @@
                                     </div>
                                     &nbsp;&nbsp;
                                     <div class="col-6 text-center w-10">
-                                        @can('BORRAR ORDEN')
+                                        @can('BORRAR ORDEN DE TRABAJO')
                                         <form class="DeleteReg" action="{{ route('work_orders.destroy', $row->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
