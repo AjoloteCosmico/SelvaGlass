@@ -131,7 +131,6 @@
         </div>
         </div>
             </div>
-            
   
 @stop
 
@@ -145,6 +144,7 @@
     padding: 0.8vw;
     font-weight: bold;
   }
+  
   table td{
     border: 2px solid gray !important;
     border-radius: 5px !important;

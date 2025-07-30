@@ -238,7 +238,6 @@ class CustomerController extends Controller
             'customer_zip_code.max' => 'Sólo puede capturar un máximo de 5 caractéres',
             'customer_mobile.required' => 'Capture el Número telefónico del CLiente',
             'customer_mobile.max' => 'Capture el Número telefónico a 10 dígitos',
-            
         ];
 
         $request->validate($rules, $messages);

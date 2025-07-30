@@ -294,13 +294,13 @@ return [
             'text' => 'ORDEN DE TRABAJO',
             'icon' => 'fas fa-clipboard-check fa-fw',
             'route'  => 'work_orders.index',
-            'can'  => 'VER PEDIDOS',
+            'can'  => 'VER ORDEN DE TRABAJO',
         ],
         [
             'text' => 'INVENTARIO',
             'icon' => 'fas fa-clipboard-check fa-fw',
             'route'  => 'bills.index',
-            'can'  => 'VER PEDIDOS',
+            'can'  => 'VER ORDEN DE TRABAJO',
         ],
         
         [
