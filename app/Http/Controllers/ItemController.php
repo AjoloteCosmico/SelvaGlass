@@ -180,7 +180,7 @@ class ItemController extends Controller
     public function destroy($id)
     {   $order_id=Item::find($id)->internal_order_id;
         Item::destroy($id);
-        return redirect('work_orders/'.$order_id);
+        return redirect('work_orders/partidas/'.$order_id);
     
     }
 }
