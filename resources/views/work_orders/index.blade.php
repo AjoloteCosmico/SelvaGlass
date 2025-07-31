@@ -40,18 +40,21 @@
                             <td>VENDEDOR PRUEBA</td>
                             <td>{{$row->process}}</td>
                             <td> </td>
-                            <td class="w-15">
+                            <td class="w-20">
                                 
                                 <div class="row">
                                 <div class="col-6 text-center w-10">
                                         <a href="{{ route('work_orders.show', $row->id)}}">
-                                            <i class="fa-solid fa-eye btn btn-blue  "></i></span>
+                                            <button class="btn btn-blue ">
+                                                <i class="fa-solid fa-eye items-center fa-xl "></i></span>
+                                            </button>
                                         </a>
                                     </div>
+                                    &nbsp;&nbsp;
                                     <div class="col-6 text-center w-10">
                                         @can('EDITAR ORDEN DE TRABAJO')
                                         <a href="{{ route('work_orders.partidas', $row->id)}}">
-                                        <button type="submit" class="btn btn-blue ">
+                                        <button  class="btn btn-blue ">
                                                 <i class="fas fa-edit items-center fa-xl"></i>
                                             </button>
                                         </a>
