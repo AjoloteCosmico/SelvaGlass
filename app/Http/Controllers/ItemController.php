@@ -85,7 +85,7 @@ class ItemController extends Controller
         
         
         
-            return redirect()->route('work_orders.partidas',$WorkOrder->id);
+            return redirect()->route('work_orders.partidas',$WorkOrder->id)->with('create_reg', 'ok');
     }
     public function edit_item($id)
     {
@@ -107,58 +107,41 @@ class ItemController extends Controller
         
         $rules = [
             'amount' => 'required',
-            'unit' => 'required',
-            'family' => 'required',
-            
-            
-            'sku' => 'required',
-            'description' => 'required',
-            'unit_price' => 'required',
+        
+       
         ];
-    
+
         $messages = [
             'amount.required' => 'La Cantidad es requerida',
-            'unit.required' => 'La unidad es requerida',
-            'family.required' => 'La familia es requerida',
             
-            
-            'sku.required' => 'SKU requerido',
-            'description.required' => 'La descripción es requerida',
-            'unit_price.required' => 'El precio unitario es requerido',
         ];
 
-        $request->validate($rules, $messages);
-
-        $Import = $request->amount * $request->unit_price;
-
-        
-        
-            $Items = Item::find($id);
-            $Items->item = $request->item;
+            $request->validate($rules, $messages);
+            $Items=Item::find($id);
+            // dd($Item,$request);
+            $WorkOrder=WorkOrder::find($Items->work_order_id);
+    
             $Items->amount = $request->amount;
-            $Items->unit = $request->unit;
-            $Items->family = $request->family;
-            $Items->code = $request->code;
-            $Items->description = $request->description;
-            $Items->unit_price =(float) $request->unit_price;
-            $Items->import = $Import;
+            $Items->type = $request->type;
+            $Items->product_id = $request->product_id;
+            $Items->process = $request->process;
+            if($request->type=='PRODUCTO'){
+                $product=Product::find($request->product_id);
+                $Items->description=$product->description.' '.$product->grosor.'MM '.$product->ancho.'x'.$product->alto;
+                $Items->total_price = $product->price * $request->amount;
+                $Items->largo=$request->largo;
+                $Items->ancho=$request->ancho;
+            }
+            else{
+                $Items->total_price = $request->amount*$request->price;
+                $Items->description=$request->process; 
+                $Items->product_id =0;
+            }
+           
             $Items->save();
         
         
-        // $InternalOrders = InternalOrder::where('id', $Items->internal_orders_id)->first();
-        
-        // $Items = Item::where('internal_order_id', $InternalOrders->id)->get();
-
-        // if(count($Items) > 0){
-        //     $Subtotal = Item::where('internal_order_id', $InternalOrders->id)->sum('import');
-        // }else{
-        //     $Subtotal = '0';
-        // }
-
-        // $Iva = $Subtotal * 0.16;
-        // $Total = $Subtotal + $Iva;
-
-        return redirect('internal_orders/edit/'.$Items->internal_order_id);
+            return redirect()->route('work_orders.partidas',$WorkOrder->id)->with('update_reg', 'ok');
     }
 
     public function show($id)
@@ -168,19 +151,57 @@ class ItemController extends Controller
 
     public function edit($id)
     {
-        //
+        $Item = Item::find($id);
+        $Products = Product::all();
+        return view('items.edit', compact('Item','Products'));
     }
     
     
     public function update(Request $request, $id)
     {
-        //
+          $rules = [
+            'amount' => 'required',
+        
+       
+        ];
+
+        $messages = [
+            'amount.required' => 'La Cantidad es requerida',
+            
+        ];
+
+            $request->validate($rules, $messages);
+            $Item=Item::find($id);
+            $WorkOrder=WorkOrder::find($Item->work_order_id);
+        
+        
+            $Items->amount = $request->amount;
+            $Items->type = $request->type;
+            $Items->product_id = $request->product_id;
+            $Items->process = $request->process;
+            if($request->type=='PRODUCTO'){
+                $product=Product::find($request->product_id);
+                $Items->description=$product->description.' '.$product->grosor.'MM '.$product->ancho.'x'.$product->alto;
+                $Items->total_price = $product->price * $request->amount;
+                $Items->largo=$request->largo;
+                $Items->ancho=$request->ancho;
+            }
+            else{
+                $Items->total_price = $request->amount*$request->price;
+                $Items->description=$request->process; 
+                $Items->product_id =0;
+            }
+           
+            $Items->save();
+        
+        
+            return redirect()->route('work_orders.partidas',$WorkOrder->id)->with('update_reg', 'ok');
     }
 
-    public function destroy($id)
-    {   $order_id=Item::find($id)->internal_order_id;
+    public function destroy(Request $request,$id)
+    {   $order_id=Item::find($id)->work_order_id;
         Item::destroy($id);
-        return redirect('work_orders/partidas/'.$order_id);
+        return redirect('work_orders/partidas/'.$order_id)->with('eliminar', 'ok');;
     
     }
 }

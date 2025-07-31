@@ -89,7 +89,7 @@
                 </div>
             </div>
             <div class="col-12 text-right p-2 gap-2">
-                <a href="{{ route('coins.index')}}" class="btn btn-black mb-2">
+                <a href="{{ route('work_orders.partidas',$WorkOrder->id)}}" class="btn btn-black mb-2">
                     <i class="fas fa-times fa-2x"></i>&nbsp;&nbsp; Cancelar
                 </a>
                 <button type="submit" class="btn btn-green mb-2">

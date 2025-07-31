@@ -46,7 +46,6 @@ class WorkOrderController extends Controller
 
         $WorkOrder=WorkOrder::find($id);
         $Items=Item::where('work_order_id',$id)->get();
-
         return view('work_orders.partidas',compact('WorkOrder','Items'));
     }
 
