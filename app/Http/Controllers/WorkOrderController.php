@@ -38,8 +38,6 @@ class WorkOrderController extends Controller
         $WorkOrder->process=$request->product_type;
         $WorkOrder->save();
         return redirect()->route('work_orders.partidas',$WorkOrder->id);
-
-        
     }
 
     public function partidas($id){
@@ -91,7 +89,9 @@ class WorkOrderController extends Controller
     }
     public function destroy($id){
         
-        return redirect()->route('work_orders.index');
+        WorkOrder::destroy($id);
+        Item::where('work_order_id',$id)->delete();
+        return redirect()->route('work_orders.index')->with('eliminar','ok');
 
     }
 }
