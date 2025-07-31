@@ -13,9 +13,8 @@
                 <i class="fas fa-plus-circle"></i>&nbsp; Agregar Partida:
             </h5>
         </div>
-        <form action="{{ route('items.store')}}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('items.redefine',$Item->id)}}" method="POST" enctype="multipart/form-data">
         @csrf
-        <x-jet-input type="hidden" name="work_order_id" value="{{$WorkOrder->id}}"/>
         <div class="row rounded-b-lg rounded-t-none mb-4 shadow-xl bg-gray-300">
             <div class="row p-4">
                 <div class="col-sm-12 col-xs-12 shadow rounded-xl p4">
@@ -25,18 +24,18 @@
                                <x-jet-label value="* Tipo de producto" />
                                 <select class="form-capture  w-full text-xs uppercase" id="type" name='type' onchange="cambio_tipo()"> 
                                        <option value=""></option>
-                                       <option value='PRODUCTO' @if(old('type')=="PRODUCTO") selected @endif> PRODUCTO</option>
-                                       <option value='PROCESO' @if(old('type')=="PROCESO") selected @endif> PROCESO</option>
-                                       <option value='PAQUETE' @if(old('type')=="PAQUETE") selected @endif> PAQUETE</option>
+                                       <option value='PRODUCTO' @if($Item->type=="PRODUCTO") selected @endif> PRODUCTO</option>
+                                       <option value='PROCESO' @if($Item->type=="PROCESO") selected @endif> PROCESO</option>
+                                       <option value='PAQUETE' @if($Item->type=="PAQUETE") selected @endif> PAQUETE</option>
                                 </select>
                               <x-jet-input-error for='type' />
                             </div>
                             <div class="form-group">
                                <x-jet-label value=" HOJA" />
                                 <select class="form-capture  w-full text-xs uppercase"  name='product_id' id='product_id'> 
-                                <option value=""></option>    
+                                <option value=""></option>   
                                 @foreach($Products as $row)
-                                       <option value='{{$row->id}}' @if(old('product_type')==$row->id) selected @endif> {{$row->description}} {{$row->grosor}}MM {{$row->ancho}}x{{$row->alto}}</option>
+                                       <option value='{{$row->id}}' @if($Item->product_id==$row->id) selected @endif> {{$row->description}} {{$row->grosor}}MM {{$row->ancho}}x{{$row->alto}}</option>
                                     @endforeach
                                 </select>
                               <x-jet-input-error for='product_id' />
@@ -45,9 +44,9 @@
                                <x-jet-label value=" Proceso" />
                                 <select class="form-capture  w-full text-xs uppercase"  name='process' id='process'> 
                                    
-                                       <option value='LAMINADO' @if(old('process')=='LAMINADO') selected @endif> LAMINADO</option>
-                                       <option value='BISEL' @if(old('process')=='BISEL') selected @endif> BISEL</option>
-                                       <option value='SERIGRAFIA' @if(old('process')=='SERIGRAFIA') selected @endif> SERIGRAFIA</option>
+                                       <option value='LAMINADO' @if($Item->process=='LAMINADO') selected @endif> LAMINADO</option>
+                                       <option value='BISEL' @if($Item->process=='BISEL') selected @endif> BISEL</option>
+                                       <option value='SERIGRAFIA' @if($Item->process=='SERIGRAFIA') selected @endif> SERIGRAFIA</option>
                                     
                                 </select>
                               <x-jet-input-error for='process' />
@@ -62,22 +61,22 @@
                                 </div>
                             <div class="form-group">
                                 <x-jet-label value="* Cantidad" />
-                                <x-jet-input type="number"  step="1" name="amount" class="w-full text-xs " value="{{old('amount')}}"/>
+                                <x-jet-input type="number"  step="1" name="amount" class="w-full text-xs " value="{{$Item->amount}}"/>
                                 <x-jet-input-error for='amount' />
                             </div>
                             <div class="form-group">
                                 <x-jet-label value="* Costo" />
-                                <x-jet-input type="number"  step="0.01" name="price" id="price" class="w-full text-xs " value="{{old('price')}}"/>
+                                <x-jet-input type="number"  step="0.01" name="price" id="price" class="w-full text-xs " value="{{$Item->price}}"/>
                                 <x-jet-input-error for='price' />
                             </div>
                             <div class="form-group">
                                 <x-jet-label value="* Medida de largo" />
-                                <x-jet-input type="number" name="largo" id="largo" class="w-full text-xs " value="{{old('largo')}}"/>
+                                <x-jet-input type="number" name="largo" id="largo" class="w-full text-xs " value="{{$Item->largo}}"/>
                                 <x-jet-input-error for='largo' />
                             </div>
                             <div class="form-group">
                                 <x-jet-label value="* Medida de ancho" />
-                                <x-jet-input type="number" name="ancho" id="ancho" class="w-full text-xs " value="{{old('ancho')}}"/>
+                                <x-jet-input type="number" name="ancho" id="ancho" class="w-full text-xs " value="{{$Item->ancho}}"/>
                                 <x-jet-input-error for='ancho' />
                             </div>
                             <div class="form-group">
@@ -90,7 +89,7 @@
                 </div>
             </div>
             <div class="col-12 text-right p-2 gap-2">
-                <a href="{{ route('work_orders.partidas',$WorkOrder->id)}}" class="btn btn-black mb-2">
+                <a href="{{ route('work_orders.partidas',$Item->work_order_id)}}" class="btn btn-black mb-2">
                     <i class="fas fa-times fa-2x"></i>&nbsp;&nbsp; Cancelar
                 </a>
                 <button type="submit" class="btn btn-green mb-2">
@@ -162,5 +161,6 @@ function cambio_tipo(){
     }
 }
 
+cambio_tipo();
 </script>
 @stop
